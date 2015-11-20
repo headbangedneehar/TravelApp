@@ -1,0 +1,25 @@
+<resources>
+    <string name="app_name">TravelersApp</string>
+    <string name="action_settings">Settings</string>
+    <string name="region">Region</string>
+    <string name="destination">Destination</string>
+    <string name="search">Search</string>
+
+    <string name="Welcome_Page_Btn">GET STARTED!</string>
+    <string name="App_Name">Easy Travel</string>
+    <string name="App_Name_1">TRAVEL EXPLORE</string>
+    <string name="Mission">Discover  Experience  Share</string>
+    <string name="Mission_1">Discover .  Experience .  Share</string>
+
+    <string name="select">Please select preference</string>
+    <string name="hotelsearch">Hotel</string>
+    <string name="restaurantsearch">Restaurant</string>
+    <string name="entertainmentsearch">Entertainment</string>
+    <string name="returnlastpage">Return</string>
+    <string name="Emergenceinfo">EmergencyInfo</string>
+    <string name="emer_head">Emergeny Contact Information</string>
+    <string name="emer_name">Contact Type</string>
+    <string name="emer_addr">Address</string>
+    <string name="emer_contact">Contact Information</string>
+    <string name="emer_return">Return to Home Page</string>
+</resources>
