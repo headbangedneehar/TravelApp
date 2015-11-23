@@ -14,6 +14,7 @@ import android.widget.Toast;
 public class WelcomeActivity extends Activity implements View.OnClickListener{
 
     private Button welcome;
+    public static String PACKAGE_NAME;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -22,6 +23,7 @@ public class WelcomeActivity extends Activity implements View.OnClickListener{
 
         welcome = (Button) this.findViewById(R.id.Welcome_Page_Btn);
         welcome.setOnClickListener(this);
+        PACKAGE_NAME = getApplicationContext().getPackageName();
     }
 
     @Override

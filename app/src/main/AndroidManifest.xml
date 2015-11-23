@@ -16,11 +16,20 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity
+            android:name=".HomeActivity"
+            android:label="@string/homeActivity" />
+        <activity
+            android:name=".SelectActivity"
+            android:label="@string/selectActivity" />
+        <activity
+            android:name=".EmergencyActivity"
+            android:label="@string/Emergenceinfo" >
+        </activity>
+        <activity
+            android:name=".ResultActivity"
+            android:label="@string/title_activity_result" >
+        </activity>
     </application>
-
-    <activity android:name="HomeActivity"></activity>
-    <activity android:name="SelectActivity"></activity>
-    <activity android:name="EmergencyActivity"></activity>
-
 
 </manifest>

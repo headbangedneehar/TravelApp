@@ -12,6 +12,8 @@ import android.widget.Toast;
 import com.db.app.travelersapp.constant.SQLCommand;
 import com.db.app.travelersapp.util.DBOperator;
 
+//import com.db.app.travelersapp.R;
+
 
 public class HomeActivity extends Activity implements View.OnClickListener {
 
@@ -26,30 +28,67 @@ public class HomeActivity extends Activity implements View.OnClickListener {
         destination = (EditText) this.findViewById(R.id.dest_editText);
         searchBtn = (Button) this.findViewById(R.id.search_btn);
         searchBtn.setOnClickListener(this);
+
+        try{
+            DBOperator.copyDB(getBaseContext());
+        }catch(Exception e){
+            e.printStackTrace();
+        }
     }
 
     @Override
     public void onClick(View v)
     {
 
-        Cursor cursor = DBOperator.getInstance().execQuery(SQLCommand.QUERY_2,
+        /*Cursor cursor = DBOperator.getInstance().execQuery(SQLCommand.QUERY_2,
                 this.getArgs(true));
 
         while(cursor.moveToNext()) {
             int regId = Integer.parseInt(cursor.getString(0));
-            Toast.makeText(getBaseContext(), "Region Id is : "+regId, Toast.LENGTH_SHORT).show();
             System.out.println("Reg Id = "+regId);
-        }
+        }*/
         int id=v.getId();
         if (id==R.id.search_btn){
-            Intent intent = new Intent(this, SelectActivity.class); //Need to put the activity class of the next page
-            this.startActivity(intent);
+
+            if(!region.getText().toString().isEmpty())
+            {
+                Cursor cursor = DBOperator.getInstance().execQuery(SQLCommand.dummy+" where reg_name='"+region.getText().toString()+"';");
+                if(cursor.getCount()>0)
+                {
+                    String regionText=region.getText().toString();
+                    Intent intent = new Intent(this, SelectActivity.class); //Need to put the activity class of the next page
+                    intent.putExtra("regionText",regionText);
+                    this.startActivity(intent);
+                    Toast.makeText(getBaseContext(), String.valueOf(cursor.getCount()),
+                            Toast.LENGTH_SHORT).show();
+                }
+                else
+                {
+                    Toast.makeText(getBaseContext(), "Region Not Found",
+                            Toast.LENGTH_SHORT).show();
+                }
+            }
+            else
+            {
+                Toast.makeText(getBaseContext(), "Blank Region! Not Valid",
+                        Toast.LENGTH_SHORT).show();
+            }
+
+
+
         }
     }
 
-    private String[] getArgs(boolean region1) {
-        String args[] = null;
-        args[0] = region.getText().toString();
+    private String[] getArgs(boolean isSearch) {
+        String[] args = null;
+        if (isSearch) {
+            args = new String[1];
+            // get region
+            args[0] = region.getText().toString();
+            // get destination
+            //args[1] = destText.getText().toString();
+
+        }
         return args;
     }
 }
