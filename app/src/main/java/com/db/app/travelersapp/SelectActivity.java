@@ -2,6 +2,7 @@ package com.db.app.travelersapp;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.graphics.Region;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -57,9 +58,26 @@ public class SelectActivity extends Activity implements View.OnClickListener{
             //scrollView.removeAllViews();
             sql= SQLCommand.get_hotel;
             Intent intent=this.getIntent();
-            String regionText = intent.getStringExtra("regionText");
+            String RegionDestText = intent.getStringExtra("RegionDestText");
             Intent intent2= new Intent(getApplicationContext(),ResultActivity.class);//(this,hreresult...)
-            sql=sql+"and region.reg_name= '"+regionText+"';";
+            if(!RegionDestText.contains(","))
+            {
+                sql=sql+" and region.reg_name= '"+RegionDestText+"';";
+            }
+            else
+            {
+                int commaAt=RegionDestText.indexOf(",");
+                String reg= RegionDestText.substring(0, commaAt);
+                String dest= RegionDestText.substring(commaAt+1);
+                if(!reg.isEmpty())
+                {
+                    sql=sql+" and region.reg_name='"+reg+"' and destination.dest_name='"+dest+"';";
+                }
+                else
+                {
+                    sql=sql+" and destination.dest_name='"+dest+"';";
+                }
+            }
             intent2.putExtra("sql", sql);
             startActivity(intent2);
             Toast.makeText(getBaseContext(), sql,

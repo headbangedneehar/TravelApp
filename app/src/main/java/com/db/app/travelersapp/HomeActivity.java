@@ -50,14 +50,14 @@ public class HomeActivity extends Activity implements View.OnClickListener {
         int id=v.getId();
         if (id==R.id.search_btn){
 
-            if(!region.getText().toString().isEmpty())
+            if(!region.getText().toString().isEmpty() && destination.getText().toString().isEmpty()) //destination is empty
             {
-                Cursor cursor = DBOperator.getInstance().execQuery(SQLCommand.dummy+" where reg_name='"+region.getText().toString()+"';");
+                Cursor cursor = DBOperator.getInstance().execQuery(SQLCommand.dummy+" where reg_name='"+region.getText().toString()+"'  and region.reg_id=destination.reg_id;");
                 if(cursor.getCount()>0)
                 {
-                    String regionText=region.getText().toString();
+                    String RegionDestText=region.getText().toString();
                     Intent intent = new Intent(this, SelectActivity.class); //Need to put the activity class of the next page
-                    intent.putExtra("regionText",regionText);
+                    intent.putExtra("RegionDestText",RegionDestText);
                     this.startActivity(intent);
                     Toast.makeText(getBaseContext(), String.valueOf(cursor.getCount()),
                             Toast.LENGTH_SHORT).show();
@@ -68,13 +68,47 @@ public class HomeActivity extends Activity implements View.OnClickListener {
                             Toast.LENGTH_SHORT).show();
                 }
             }
-            else
+            else if(region.getText().toString().isEmpty() && destination.getText().toString().isEmpty()) //both are empty
             {
-                Toast.makeText(getBaseContext(), "Blank Region! Not Valid",
+                Toast.makeText(getBaseContext(), "Blank Region and Destination! Not Valid",
                         Toast.LENGTH_SHORT).show();
             }
-
-
+            else if(!region.getText().toString().isEmpty() && !destination.getText().toString().isEmpty())
+            {
+                Cursor cursor = DBOperator.getInstance().execQuery(SQLCommand.dummy+" where region.reg_name='"+region.getText().toString()+"' and destination.dest_name='"+destination.getText().toString()+"' and region.reg_id=destination.reg_id;");
+                if(cursor.getCount()>0)//to see if there exists at least 1 row with the result, that is region and destination must be valid to be true
+                {
+                    String RegionDestText=region.getText().toString()+','+destination.getText().toString();
+                    Intent intent = new Intent(this, SelectActivity.class); //Need to put the activity class of the next page
+                    intent.putExtra("RegionDestText",RegionDestText);
+                    this.startActivity(intent);
+                    Toast.makeText(getBaseContext(), String.valueOf(cursor.getCount()),
+                            Toast.LENGTH_SHORT).show();
+                }
+                else
+                {
+                    Toast.makeText(getBaseContext(), "Region/Destination Not Found",
+                            Toast.LENGTH_SHORT).show();
+                }
+            }
+            else if(region.getText().toString().isEmpty() && !destination.getText().toString().isEmpty()) //destination is empty
+            {
+                Cursor cursor = DBOperator.getInstance().execQuery(SQLCommand.checkDestination+" where destination.dest_name='"+destination.getText().toString()+"' and region.reg_id=destination.reg_id;");
+                if(cursor.getCount()>0)
+                {
+                    String RegionDestText=","+destination.getText().toString();
+                    Intent intent = new Intent(this, SelectActivity.class); //Need to put the activity class of the next page
+                    intent.putExtra("RegionDestText",RegionDestText);
+                    this.startActivity(intent);
+                    Toast.makeText(getBaseContext(), String.valueOf(cursor.getCount()),
+                            Toast.LENGTH_SHORT).show();
+                }
+                else
+                {
+                    Toast.makeText(getBaseContext(), "Destination Not Found",
+                            Toast.LENGTH_SHORT).show();
+                }
+            }
 
         }
     }
