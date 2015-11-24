@@ -1,20 +1,19 @@
 package com.db.app.travelersapp;
 
+import android.app.Activity;
 import android.content.Intent;
 import android.database.Cursor;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.view.Menu;
-import android.view.MenuItem;
-import android.widget.HorizontalScrollView;
-import android.widget.ScrollView;
-
+import android.view.View;
+import android.widget.AdapterView;
+import android.widget.ListView;
+import android.widget.SimpleCursorAdapter;
+import android.widget.Toast;
 import com.db.app.travelersapp.util.DBOperator;
-import com.db.app.travelersapp.view.TableView;
 
-public class ResultActivity extends AppCompatActivity {
+public class ResultActivity extends Activity {
 
-    HorizontalScrollView scrollView;
+    ListView listView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -24,29 +23,22 @@ public class ResultActivity extends AppCompatActivity {
         Intent intent = this.getIntent();
         String sql = intent.getStringExtra("sql");
         Cursor cursor = DBOperator.getInstance().execQuery(sql);
-        scrollView=(HorizontalScrollView)this.findViewById(R.id.result_scrollView);
-        scrollView.addView(new TableView(this.getBaseContext(), cursor));
+        listView=(ListView)this.findViewById(R.id.result_listView);
+        listView.setOnItemClickListener(new ItemClickListener());
+
+        SimpleCursorAdapter adapter = new SimpleCursorAdapter(getApplicationContext(), R.layout.activity_result, cursor,
+                new String[]{"Name"}, new int[]{R.id.uni_name}, SimpleCursorAdapter.IGNORE_ITEM_VIEW_TYPE);
+
+        listView.setAdapter(adapter);
+
     }
 
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.menu_result, menu);
-        return true;
-    }
+    private class ItemClickListener implements AdapterView.OnItemClickListener {
 
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        // Handle action bar item clicks here. The action bar will
-        // automatically handle clicks on the Home/Up button, so long
-        // as you specify a parent activity in AndroidManifest.xml.
-        int id = item.getItemId();
-
-        //noinspection SimplifiableIfStatement
-        if (id == R.id.action_settings) {
-            return true;
+        public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+            Cursor cursor = (Cursor) listView.getItemAtPosition(position);
+            String name = cursor.getString(0);
+            Toast.makeText(getApplicationContext(), "Clickedd", Toast.LENGTH_SHORT).show();
         }
-
-        return super.onOptionsItemSelected(item);
     }
 }
