@@ -30,7 +30,7 @@ public class EmergencyActivity extends Activity implements View.OnClickListener{
         //listView.setOnItemClickListener(new ItemClickListener());
 
         SimpleCursorAdapter adapter = new SimpleCursorAdapter(getApplicationContext(), R.layout.listitem_emer, cursor,
-                new String[]{"Type", "Address", "Contact"}, new int[]{R.id.emer_name,R.id.emer_addr, R.id.emer_contact}, SimpleCursorAdapter.IGNORE_ITEM_VIEW_TYPE);
+                new String[]{"emer_name", "emer_addr", "emer_contact"}, new int[]{R.id.emer_name,R.id.emer_addr, R.id.emer_contact}, SimpleCursorAdapter.IGNORE_ITEM_VIEW_TYPE);
 
         listView.setAdapter(adapter);
     }

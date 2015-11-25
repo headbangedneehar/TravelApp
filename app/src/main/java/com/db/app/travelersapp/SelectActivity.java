@@ -12,7 +12,7 @@ import com.db.app.travelersapp.util.DBOperator;
 
 
 public class SelectActivity extends Activity implements View.OnClickListener{
-    Button goHotel_btn,goEntertainment_btn,goRestauant_btn;
+    Button goHotel_btn,goEntertainment_btn,goRestauant_btn, emergencyButton;
     ScrollView scrollView;
     /** Called when the activity is first created. */
     @Override
@@ -32,6 +32,8 @@ public class SelectActivity extends Activity implements View.OnClickListener{
         goEntertainment_btn.setOnClickListener(this);
         goRestauant_btn=(Button)this.findViewById(R.id.goRestauant_btn);
         goRestauant_btn.setOnClickListener(this);
+        emergencyButton=(Button)this.findViewById(R.id.goEmergency_btn);
+        emergencyButton.setOnClickListener(this);
         //scrollView=(ScrollView)this.findViewById(R.id.tempscrollview);
     }
 
