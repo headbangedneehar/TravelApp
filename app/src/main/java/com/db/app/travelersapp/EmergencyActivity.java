@@ -2,25 +2,37 @@ package com.db.app.travelersapp;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.database.Cursor;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ListView;
+import android.widget.SimpleCursorAdapter;
+
+import com.db.app.travelersapp.util.DBOperator;
 
 /**
  * Created by Nupurb on 20-11-2015.
  */
 public class EmergencyActivity extends Activity implements View.OnClickListener{
     Button returnBtn;
-    ListView list;
+    ListView listView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_home);
-        list = (ListView) this.findViewById(R.id.emer_listView);
-        returnBtn = (Button) this.findViewById(R.id.returnButton);
-        returnBtn.setOnClickListener(this);
+        setContentView(R.layout.activity_emergency);
+
+        Intent intent = this.getIntent();
+        String sql = intent.getStringExtra("sql");
+        Cursor cursor = DBOperator.getInstance().execQuery(sql);
+        listView=(ListView)this.findViewById(R.id.emer_listView);
+        //listView.setOnItemClickListener(new ItemClickListener());
+
+        SimpleCursorAdapter adapter = new SimpleCursorAdapter(getApplicationContext(), R.layout.listitem_emer, cursor,
+                new String[]{"Type", "Address", "Contact"}, new int[]{R.id.emer_name,R.id.emer_addr, R.id.emer_contact}, SimpleCursorAdapter.IGNORE_ITEM_VIEW_TYPE);
+
+        listView.setAdapter(adapter);
     }
 
     @Override

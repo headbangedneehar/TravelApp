@@ -26,8 +26,8 @@ public class ResultActivity extends Activity {
         listView=(ListView)this.findViewById(R.id.result_listView);
         listView.setOnItemClickListener(new ItemClickListener());
 
-        SimpleCursorAdapter adapter = new SimpleCursorAdapter(getApplicationContext(), R.layout.activity_result, cursor,
-                new String[]{"Name"}, new int[]{R.id.uni_name}, SimpleCursorAdapter.IGNORE_ITEM_VIEW_TYPE);
+        SimpleCursorAdapter adapter = new SimpleCursorAdapter(getApplicationContext(), R.layout.listitem_result, cursor,
+                new String[]{"uni_name"}, new int[]{R.id.uni_name}, SimpleCursorAdapter.IGNORE_ITEM_VIEW_TYPE);
 
         listView.setAdapter(adapter);
 

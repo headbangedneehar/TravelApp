@@ -2,30 +2,14 @@ package com.db.app.travelersapp;
 
 import android.app.Activity;
 import android.content.Intent;
-import android.graphics.Region;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ScrollView;
 import android.widget.Toast;
-
-//import project.db.travelapp.R;
-//import com.db.travel.app.v1.view.TableView;
 import com.db.app.travelersapp.constant.SQLCommand;
 import com.db.app.travelersapp.util.DBOperator;
-/*import android.app.Activity;
-import android.content.DialogInterface;
-import android.content.Intent;
-import android.database.Cursor;
-import android.os.Bundle;
-import android.view.Menu;
-import android.view.MenuItem;
-import android.view.View;
-import android.widget.Button;
-import android.widget.ScrollView;
-import android.widget.Toast;
 
-import com.db.app.travelersapp.util.DBOperator;*/
 
 public class SelectActivity extends Activity implements View.OnClickListener{
     Button goHotel_btn,goEntertainment_btn,goRestauant_btn;
@@ -57,40 +41,28 @@ public class SelectActivity extends Activity implements View.OnClickListener{
         if(id==R.id.goHotel_btn){
             //scrollView.removeAllViews();
             sql= SQLCommand.get_hotel;
-            getSQL(sql);
+            getSQL(sql, ResultActivity.class);
             //Cursor cursor=DBOperator.getInstance().execQuery(sql);
             //scrollView.addView(new TableView(this.getBaseContext(),cursor));
         } else if(id==R.id.goEntertainment_btn) {
-            getSQL(SQLCommand.dummy);  //Change this to entertainment query
+            getSQL(SQLCommand.dummy, null);  //Change this to entertainment query
 
         }else if(id == R.id.goEmergency_btn) {
-
+            Toast.makeText(getBaseContext(), "emergency clicked",
+                    Toast.LENGTH_SHORT).show();
+            getSQL(SQLCommand.getEmergency, EmergencyActivity.class);
         }
 
     }
 
-    private void getSQL(String sql) {
+    private void getSQL(String sql, Class intentClass) {
         Intent intent=this.getIntent();
-        String RegionDestText = intent.getStringExtra("RegionDestText");
-        Intent intent2= new Intent(getApplicationContext(),ResultActivity.class);//(this,hreresult...)
-        if(!RegionDestText.contains(","))
-        {
-            sql=sql+" and region.reg_name= '"+RegionDestText+"';";
-        }
-        else
-        {
-            int commaAt=RegionDestText.indexOf(",");
-            String reg= RegionDestText.substring(0, commaAt);
-            String dest= RegionDestText.substring(commaAt+1);
-            if(!reg.isEmpty())
-            {
-                sql=sql+" and region.reg_name='"+reg+"' and destination.dest_name='"+dest+"';";
-            }
-            else
-            {
-                sql=sql+"'"+dest+"';";
-            }
-        }
+        String destination = intent.getStringExtra("Destination");
+        Intent intent2= new Intent(getApplicationContext(),intentClass);//(this,hreresult...)
+
+                sql=sql+"'"+destination+"';";
+
+
         intent2.putExtra("sql", sql);
         startActivity(intent2);
         Toast.makeText(getBaseContext(), sql,
