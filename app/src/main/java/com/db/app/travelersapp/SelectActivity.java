@@ -64,7 +64,7 @@ public class SelectActivity extends Activity implements View.OnClickListener{
         String destination = intent.getStringExtra("Destination");
         Intent intent2= new Intent(getApplicationContext(),intentClass);//(this,hreresult...)
 
-                sql=sql+"'"+destination+"';";
+                sql=sql+"'"+destination+"' GROUP BY u.uni_name,u.uni_id ORDER BY c.rating desc;";
 
 
         intent2.putExtra("sql", sql);

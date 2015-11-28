@@ -39,14 +39,6 @@ public class HomeActivity extends Activity implements View.OnClickListener {
     @Override
     public void onClick(View v)
     {
-
-        /*Cursor cursor = DBOperator.getInstance().execQuery(SQLCommand.QUERY_2,
-                this.getArgs(true));
-
-        while(cursor.moveToNext()) {
-            int regId = Integer.parseInt(cursor.getString(0));
-            System.out.println("Reg Id = "+regId);
-        }*/
         int id=v.getId();
 
         if (id==R.id.search_btn){
@@ -89,18 +81,5 @@ public class HomeActivity extends Activity implements View.OnClickListener {
                 }
             }
         }
-    }
-
-    private String[] getArgs(boolean isSearch) {
-        String[] args = null;
-        if (isSearch) {
-            args = new String[1];
-            // get region
-            args[0] = region.getText().toString();
-            // get destination
-            //args[1] = destText.getText().toString();
-
-        }
-        return args;
     }
 }
