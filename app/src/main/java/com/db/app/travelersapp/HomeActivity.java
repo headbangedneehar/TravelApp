@@ -53,8 +53,10 @@ public class HomeActivity extends Activity implements View.OnClickListener {
 
             if(!region.getText().toString().isEmpty() && destination.getText().toString().isEmpty()) //destination is empty
             {
-                Cursor cursor = DBOperator.getInstance().execQuery(SQLCommand.check_region+"'"+region.getText().toString()+"';");
-                if(cursor.getCount()>0)
+                Cursor cursor = DBOperator.getInstance().execQuery(SQLCommand.checkRegion+"'"+region.getText().toString().toUpperCase()+"';");
+                Toast.makeText(getBaseContext(), "After region query " + cursor.getCount(),
+                        Toast.LENGTH_SHORT).show();
+                if(cursor.getCount() > 0)
                 {
                     String inputRegion=region.getText().toString();
                     Intent intent = new Intent(this, DestinationlistActivity.class); //Need to put the DestList activity class of the next page
@@ -72,7 +74,7 @@ public class HomeActivity extends Activity implements View.OnClickListener {
                 Toast.makeText(getBaseContext(), "Blank Region and Destination! Not Valid",
                         Toast.LENGTH_SHORT).show();
             } else if(!destination.getText().toString().isEmpty()) {
-                Cursor cursor = DBOperator.getInstance().execQuery(SQLCommand.check_dest + "'" + destination.getText().toString() + "'");
+                Cursor cursor = DBOperator.getInstance().execQuery(SQLCommand.checkDest + "'" + destination.getText().toString() + "'");
                 if (cursor.getCount() > 0)//to see if there exists at least 1 row with the result, that is region and destination must be valid to be true
                 {
                     String inputDest = destination.getText().toString();

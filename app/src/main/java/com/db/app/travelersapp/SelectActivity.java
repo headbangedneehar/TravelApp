@@ -42,14 +42,16 @@ public class SelectActivity extends Activity implements View.OnClickListener{
         int id=v.getId();
         if(id==R.id.goHotel_btn){
             //scrollView.removeAllViews();
-            sql= SQLCommand.get_hotel;
+            sql= SQLCommand.getHotel;
             getSQL(sql, ResultActivity.class);
             //Cursor cursor=DBOperator.getInstance().execQuery(sql);
             //scrollView.addView(new TableView(this.getBaseContext(),cursor));
         } else if(id==R.id.goEntertainment_btn) {
-            getSQL(SQLCommand.dummy, null);  //Change this to entertainment query
+            getSQL(SQLCommand.getEntertainment, ResultActivity.class);  //Change this to entertainment query
 
-        }else if(id == R.id.goEmergency_btn) {
+        } else if(id == R.id.goRestauant_btn) {
+            getSQL(SQLCommand.getRestaurant, ResultActivity.class);  //Change this to entertainment query
+        } else if(id == R.id.goEmergency_btn) {
             Toast.makeText(getBaseContext(), "emergency clicked",
                     Toast.LENGTH_SHORT).show();
             getSQL(SQLCommand.getEmergency, EmergencyActivity.class);
