@@ -30,6 +30,10 @@
             android:name=".ResultActivity"
             android:label="@string/title_activity_result" >
         </activity>
+        <activity
+            android:name=".DestinationlistActivity"
+            android:label="@string/title_activity_result" >
+        </activity>
     </application>
 
 </manifest>

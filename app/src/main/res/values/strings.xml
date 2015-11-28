@@ -28,4 +28,6 @@
 
     <string name="hello_world">Hello world!</string>
     <string name="uni_name">Name</string>
+    <string name="dest_text">Destination</string>
+    <string name="cont_btn">Continue</string>
 </resources>

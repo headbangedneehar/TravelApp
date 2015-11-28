@@ -57,7 +57,7 @@ public class HomeActivity extends Activity implements View.OnClickListener {
                 if(cursor.getCount()>0)
                 {
                     String inputRegion=region.getText().toString();
-                    Intent intent = new Intent(this, SelectActivity.class); //Need to put the DestList activity class of the next page
+                    Intent intent = new Intent(this, DestinationlistActivity.class); //Need to put the DestList activity class of the next page
                     intent.putExtra("Region",inputRegion);
                     this.startActivity(intent);
                     Toast.makeText(getBaseContext(), String.valueOf(cursor.getCount()),
