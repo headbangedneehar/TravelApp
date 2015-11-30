@@ -69,7 +69,7 @@ public class HomeActivity extends Activity implements View.OnClickListener {
                 Cursor cursor = DBOperator.getInstance().execQuery(SQLCommand.checkDest + "'" + destination.getText().toString() + "'");
                 if (cursor.getCount() > 0)//to see if there exists at least 1 row with the result, that is region and destination must be valid to be true
                 {
-                    String inputDest = destination.getText().toString();
+                    String inputDest = destination.getText().toString().toUpperCase();
                     Intent intent = new Intent(this, SelectActivity.class); //Need to put the activity class of the next page
                     intent.putExtra("Destination", inputDest);
                     this.startActivity(intent);
