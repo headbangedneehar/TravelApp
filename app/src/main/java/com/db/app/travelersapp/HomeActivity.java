@@ -65,8 +65,9 @@ public class HomeActivity extends Activity implements View.OnClickListener {
             {
                 Toast.makeText(getBaseContext(), "Blank Region and Destination! Not Valid",
                         Toast.LENGTH_SHORT).show();
-            } else if(!destination.getText().toString().isEmpty()) {
-                Cursor cursor = DBOperator.getInstance().execQuery(SQLCommand.checkDest + "'" + destination.getText().toString() + "'");
+            }
+            else if(!destination.getText().toString().isEmpty()) {
+                Cursor cursor = DBOperator.getInstance().execQuery(SQLCommand.checkDest + "'" + destination.getText().toString().toUpperCase() + "'");
                 if (cursor.getCount() > 0)//to see if there exists at least 1 row with the result, that is region and destination must be valid to be true
                 {
                     String inputDest = destination.getText().toString().toUpperCase();
@@ -75,7 +76,9 @@ public class HomeActivity extends Activity implements View.OnClickListener {
                     this.startActivity(intent);
                     Toast.makeText(getBaseContext(), String.valueOf(cursor.getCount()),
                             Toast.LENGTH_SHORT).show();
-                } else {
+                }
+                else
+                {
                     Toast.makeText(getBaseContext(), "Region/Destination Not Found",
                             Toast.LENGTH_SHORT).show();
                 }

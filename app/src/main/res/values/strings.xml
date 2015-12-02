@@ -25,10 +25,16 @@
     <string name="emer_contact">Contact Information</string>
     <string name="emer_return">Return to Home Page</string>
     <string name="title_activity_result">ResultActivity</string>
+    <string name="title_activity_description">DescriptionActivity</string>
 
     <string name="hello_world">Hello world!</string>
     <string name="uni_name">Name</string>
     <string name="dest_text">Destination</string>
     <string name="cont_btn">Continue</string>
     <string name="rating">Rating</string>
+    <string name="travel_info">Travel Info</string>
+    <string name="title_activity_travel_info">travelInfoActivity</string>
+    <string name="trans_type">Transport Type</string>
+    <string name="start_point">Start Point</string>
+    <string name="title_activity_demo">demoActivity</string>
 </resources>

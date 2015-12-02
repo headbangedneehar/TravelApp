@@ -13,6 +13,7 @@ import com.db.app.travelersapp.util.DBOperator;
 
 public class SelectActivity extends Activity implements View.OnClickListener{
     Button goHotel_btn,goEntertainment_btn,goRestauant_btn, emergencyButton;
+    static boolean isHotel=false,isEntertainment=false,isRestaurant=false;
     ScrollView scrollView;
     /** Called when the activity is first created. */
     @Override
@@ -44,13 +45,15 @@ public class SelectActivity extends Activity implements View.OnClickListener{
             //scrollView.removeAllViews();
             sql= SQLCommand.getHotel;
             getSQL(sql, ResultActivity.class);
+            isRestaurant=false;isEntertainment=false;isHotel=true;
             //Cursor cursor=DBOperator.getInstance().execQuery(sql);
             //scrollView.addView(new TableView(this.getBaseContext(),cursor));
         } else if(id==R.id.goEntertainment_btn) {
             getSQL(SQLCommand.getEntertainment, ResultActivity.class);  //Change this to entertainment query
-
+            isRestaurant=false;isEntertainment=true;isHotel=false;
         } else if(id == R.id.goRestauant_btn) {
             getSQL(SQLCommand.getRestaurant, ResultActivity.class);  //Change this to entertainment query
+            isRestaurant=true;isEntertainment=false;isHotel=false;
         } else if(id == R.id.goEmergency_btn) {
             Toast.makeText(getBaseContext(), "emergency clicked",
                     Toast.LENGTH_SHORT).show();

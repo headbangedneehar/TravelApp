@@ -34,6 +34,18 @@
             android:name=".DestinationlistActivity"
             android:label="@string/title_activity_result" >
         </activity>
+        <activity
+            android:name=".DescriptionActivity"
+            android:label="@string/title_activity_description" >
+        </activity>
+        <activity
+            android:name=".travelInfoActivity"
+            android:label="@string/title_activity_travel_info" >
+        </activity>
+        <activity
+            android:name=".demoActivity"
+            android:label="@string/title_activity_demo" >
+        </activity>
     </application>
 
 </manifest>
