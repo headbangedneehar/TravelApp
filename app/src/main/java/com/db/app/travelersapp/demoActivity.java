@@ -69,7 +69,7 @@ public class demoActivity extends Activity {
                     rightLL.addView(rightRowTextView);
                     tr.addView(leftLL);
                     tr.addView(rightLL);
-                    if((i+1)%4==0)
+                    if((i+1)%5==0)
                     {
                         tr.setPadding(0,0,0,30);
                     }

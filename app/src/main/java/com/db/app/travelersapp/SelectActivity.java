@@ -50,7 +50,7 @@ public class SelectActivity extends Activity implements View.OnClickListener{
             //scrollView.addView(new TableView(this.getBaseContext(),cursor));
         } else if(id==R.id.goEntertainment_btn) {
             getSQL(SQLCommand.getEntertainment, ResultActivity.class);  //Change this to entertainment query
-            isRestaurant=false;isEntertainment=true;isHotel=false;
+            isRestaurant=true;isEntertainment=true;isHotel=false;
         } else if(id == R.id.goRestauant_btn) {
             getSQL(SQLCommand.getRestaurant, ResultActivity.class);  //Change this to entertainment query
             isRestaurant=true;isEntertainment=false;isHotel=false;

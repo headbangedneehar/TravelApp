@@ -46,6 +46,7 @@
             android:name=".demoActivity"
             android:label="@string/title_activity_demo" >
         </activity>
+        <activity android:name="org.achartengine.GraphicalActivity" />
     </application>
 
 </manifest>

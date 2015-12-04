@@ -32,4 +32,10 @@
         android:text="@string/travel_info"
         android:id="@+id/travelinfo_button" />
 
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/rating_btn"
+        android:id="@+id/rating_btn" />
+
 </LinearLayout>

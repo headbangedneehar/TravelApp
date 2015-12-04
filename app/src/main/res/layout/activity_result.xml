@@ -19,23 +19,23 @@ android:weightSum="1">
             android:layout_height="wrap_content"
             android:text="@string/uni_name"
             android:textSize="20dp"
-            android:layout_gravity="center_horizontal"
-            android:layout_marginLeft="100sp" />
+            android:layout_marginLeft="20dp"
+            android:layout_weight=".7" />
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/rating"
             android:id="@+id/textView8"
-            android:layout_marginLeft="105sp"
             android:textSize="20dp"
             android:textStyle="bold"
-            android:layout_gravity="center_horizontal" />
+            android:layout_weight=".15"
+            android:layout_gravity="left" />
     </LinearLayout>
 
     <ListView
     android:layout_width="match_parent"
-    android:layout_height="429dp"
+    android:layout_height="wrap_content"
     android:id="@+id/result_listView" />
 
 </LinearLayout>

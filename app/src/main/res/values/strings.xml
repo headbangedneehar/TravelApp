@@ -37,4 +37,5 @@
     <string name="trans_type">Transport Type</string>
     <string name="start_point">Start Point</string>
     <string name="title_activity_demo">demoActivity</string>
+    <string name="rating_btn">Ratings</string>
 </resources>

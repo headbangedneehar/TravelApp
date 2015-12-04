@@ -11,7 +11,7 @@ public abstract class DBConstant
     //database file directory
     public static String DATABASE_PATH = "/data/data/"+ WelcomeActivity.PACKAGE_NAME+"/databases";
     //database file name
-    public static String DATABASE_FILE = "travelapp.db";
+    public static String DATABASE_FILE = "travelerapp.db";
     //database version
     public static int DATABASE_VERSION = 1;
 }

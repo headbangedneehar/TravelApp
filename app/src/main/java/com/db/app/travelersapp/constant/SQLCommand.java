@@ -32,5 +32,8 @@ public abstract class SQLCommand
     public static String transinfo="select transport.trans_id as _id,transport.trans_type as trans_type,transport.start_point as start_point from transport,destination where destination.dest_id=transport.dest_id and destination.dest_id in (select uni_type.dest_id from uni_type where uni_type.uni_id='";
     public static  String travelinfo="select ti.travel_dist,ti.travel_time,ti.travel_price from travel_info ti,transport t where ti.trans_id=t.trans_id and uni_id=";
 
-    public static String demo="select t.start_point as 'Start Point',ti.travel_dist as Distance,ti.travel_time as Time,ti.travel_price as Price from travel_info ti,transport t where ti.trans_id=t.trans_id and uni_id=";
+    public static String demo="select t.start_point as 'Start Point',t.trans_type as 'Travel By',ti.travel_dist as Distance,ti.travel_time as Time,ti.travel_price as Price from travel_info ti,transport t where ti.trans_id=t.trans_id and uni_id=";
+
+    public static  String rating="select rating,count(*) from cust_rating where uni_id='";
+
 }
