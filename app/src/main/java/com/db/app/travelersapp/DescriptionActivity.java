@@ -7,6 +7,7 @@ import android.graphics.Point;
 import android.os.Bundle;
 import android.view.Display;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.ScrollView;
@@ -32,7 +33,8 @@ public class DescriptionActivity extends Activity implements View.OnClickListene
     TextView textView1, textView2;
     Button travelInfoButton, ratingButton;
     LinearLayout leftLinearLayout, rightLinearLayout;
-    static TableLayout tl;
+    static TableLayout tl,desc_table;
+    private int rat_id=29;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -61,6 +63,7 @@ public class DescriptionActivity extends Activity implements View.OnClickListene
         //String one=cursor.getString(cursor.getColumnIndex(""));
         //leftLinearLayout=(LinearLayout)this.findViewById(R.id.left_result_layout);
         //rightLinearLayout=(LinearLayout)this.findViewById(R.id.right_result_layout);
+        desc_table = (TableLayout) this.findViewById(R.id.desc_table);
         tl = (TableLayout) this.findViewById(R.id.temptable);
         if (cursor != null) {
             cursor.moveToFirst();
@@ -100,7 +103,7 @@ public class DescriptionActivity extends Activity implements View.OnClickListene
 
             leftRowTextView.setSingleLine(false);
             rightRowTextView.setSingleLine(false);
-            rightRowTextView.setPadding(0, 0, 50, 0);
+            rightRowTextView.setPadding(20,0,70,0);
 
             leftLL.addView(leftRowTextView);
             rightLL.addView(rightRowTextView);
@@ -122,7 +125,46 @@ public class DescriptionActivity extends Activity implements View.OnClickListene
         }
         cursor.close();
 
+        String descsql=SQLCommand.getDescription+uni_id+"';";
+        Cursor cursor2 = DBOperator.getInstance().execQuery(descsql);
+        if(cursor2!=null && cursor2.moveToFirst())
+            do {
+                //int no_of_cols_desc = cursor2.getColumnCount();
+                //for (int i = 0; i < no_of_cols_desc; i++) {
+                    //int a=1;
+                    TableRow tr = new TableRow(this);
+                    ViewGroup.LayoutParams lp = new ViewGroup.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT);
+                    tr.setLayoutParams(lp);
+                    TextView RowTextView = new TextView(this);//previously final
+                    //TextView rightRowTextView = new TextView(this);
+                    LinearLayout LL = new LinearLayout(this);
+                    //LinearLayout rightLL = new LinearLayout(this);
+                    //leftRowTextView.setText(a+". ");
+                    if(!cursor2.getString(0).isEmpty())
+                    RowTextView.setText("> "+cursor2.getString(0));
+                    //leftRowTextView.setWidth(Math.round(displayWidth * .1f));
+                    RowTextView.setMaxWidth(Math.round(displayWidth * 1f));
+
+                    RowTextView.setSingleLine(false);
+                    //rightRowTextView.setSingleLine(false);
+                    RowTextView.setPadding(0, 0, 70, 0);
+
+                    LL.addView(RowTextView);
+                    //rightLL.addView(rightRowTextView);
+                    tr.addView(LL);
+                    //tr.addView(rightLL);
+                    desc_table.addView(tr);
+                    tr.setPadding(0, 0, 0, 30);
+                    //a=a+1;
+                //}
+
+
+            }
+            while(cursor2.moveToNext());
+        cursor2.close();
+
     }
+
 
     /*
         @Override
@@ -179,6 +221,14 @@ public class DescriptionActivity extends Activity implements View.OnClickListene
             Intent intent = ChartGenerator.getBarChart(getBaseContext(),
                     "Ratings",pairList);
             this.startActivity(intent);
+        }
+        else if(id==R.id.post_review_button)
+        {
+            Intent intent= new Intent(getApplicationContext(),AddReviewActivity.class);
+
+            rat_id+=1;
+            intent.putExtra("uni_id",uni_id);
+            intent.putExtra("rat_id",rat_id);
         }
     }
 }

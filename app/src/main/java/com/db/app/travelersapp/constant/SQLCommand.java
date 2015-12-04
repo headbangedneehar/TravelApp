@@ -36,4 +36,8 @@ public abstract class SQLCommand
 
     public static  String rating="select rating,count(*) from cust_rating where uni_id='";
 
+    public  static  String getDescription="select review from cust_rating where uni_id='";
+
+    public static String addReview="insert into cust_review values('000";
+
 }

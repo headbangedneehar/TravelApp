@@ -1,4 +1,4 @@
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent"
     android:layout_height="match_parent" android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
@@ -15,8 +15,11 @@
     <LinearLayout
         android:orientation="horizontal"
         android:layout_width="351dp"
-        android:layout_height="281dp"
-        android:id="@+id/result_linearlayout">
+        android:layout_height="200dp"
+        android:id="@+id/result_linearlayout"
+        android:layout_alignParentEnd="false"
+        android:layout_alignParentTop="false"
+        android:layout_below="@+id/temp_textview">
 
         <TableLayout
             android:layout_width="match_parent"
@@ -26,16 +29,45 @@
         </TableLayout>
     </LinearLayout>
 
-    <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/travel_info"
-        android:id="@+id/travelinfo_button" />
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:id="@+id/scrollView"
+        android:layout_below="@+id/result_linearlayout"
+        android:layout_above="@+id/linearLayout2" >
 
-    <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/rating_btn"
-        android:id="@+id/rating_btn" />
+        <TableLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:id="@+id/desc_table">
 
-</LinearLayout>
+        </TableLayout>
+    </ScrollView>
+
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:id="@+id/linearLayout2">
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/travel_info"
+            android:id="@+id/travelinfo_button" />
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/rating_btn"
+            android:id="@+id/rating_btn" />
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/add_review"
+            android:text="@string/add_review_button" />
+    </LinearLayout>
+
+</RelativeLayout>
