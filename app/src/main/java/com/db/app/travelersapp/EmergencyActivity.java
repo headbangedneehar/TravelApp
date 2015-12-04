@@ -22,7 +22,8 @@ public class EmergencyActivity extends Activity implements View.OnClickListener{
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_emergency);
-
+        //set it back to false
+        SelectActivity.isEmergency=false;
         Intent intent = this.getIntent();
         String sql = intent.getStringExtra("sql");
         Cursor cursor = DBOperator.getInstance().execQuery(sql);

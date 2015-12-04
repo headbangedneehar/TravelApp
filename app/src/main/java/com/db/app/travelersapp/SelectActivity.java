@@ -13,7 +13,7 @@ import com.db.app.travelersapp.util.DBOperator;
 
 public class SelectActivity extends Activity implements View.OnClickListener{
     Button goHotel_btn,goEntertainment_btn,goRestauant_btn, emergencyButton;
-    static boolean isHotel=false,isEntertainment=false,isRestaurant=false;
+    static boolean isHotel=false,isEntertainment=false,isRestaurant=false,isEmergency=false;
     ScrollView scrollView;
     /** Called when the activity is first created. */
     @Override
@@ -57,6 +57,7 @@ public class SelectActivity extends Activity implements View.OnClickListener{
         } else if(id == R.id.goEmergency_btn) {
             Toast.makeText(getBaseContext(), "emergency clicked",
                     Toast.LENGTH_SHORT).show();
+            isEmergency=true;
             getSQL(SQLCommand.getEmergency, EmergencyActivity.class);
         }
 
@@ -66,8 +67,14 @@ public class SelectActivity extends Activity implements View.OnClickListener{
         Intent intent=this.getIntent();
         String destination = intent.getStringExtra("Destination");
         Intent intent2= new Intent(getApplicationContext(),intentClass);//(this,hreresult...)
-
-                sql=sql+"'"+destination+"' GROUP BY u.uni_name,u.uni_id ORDER BY c.rating desc;";
+        if(!isEmergency)
+        {
+            sql=sql+"'"+destination+"' GROUP BY u.uni_name,u.uni_id ORDER BY c.rating desc;";
+        }
+        else
+        {
+            sql=sql+"'"+destination+"';";
+        }
 
 
         intent2.putExtra("sql", sql);
