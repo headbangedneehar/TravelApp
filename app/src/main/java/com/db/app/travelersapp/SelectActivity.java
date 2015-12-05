@@ -14,7 +14,6 @@ import com.db.app.travelersapp.util.DBOperator;
 
 public class SelectActivity extends Activity implements View.OnClickListener{
     Button goHotel_btn,goEntertainment_btn,goRestauant_btn, emergencyButton, returnButton;
-    static boolean isHotel=false,isEntertainment=false,isRestaurant=false,isEmergency=false;
 
     /** Called when the activity is first created. */
     @Override
@@ -54,19 +53,16 @@ public class SelectActivity extends Activity implements View.OnClickListener{
             //scrollView.removeAllViews();
             sql= SQLCommand.getHotel;
             getSQL(sql, ResultActivity.class);
-            isRestaurant=false;isEntertainment=false;isHotel=true;
-            //Cursor cursor=DBOperator.getInstance().execQuery(sql);
-            //scrollView.addView(new TableView(this.getBaseContext(),cursor));
+
         } else if(id==R.id.goEntertainment_btn) {
-            getSQL(SQLCommand.getEntertainment, ResultActivity.class);  //Change this to entertainment query
-            isRestaurant=true;isEntertainment=true;isHotel=false;
+            getSQL(SQLCommand.getEntertainment, ResultActivity.class);
+
         } else if(id == R.id.goRestauant_btn) {
-            getSQL(SQLCommand.getRestaurant, ResultActivity.class);  //Change this to entertainment query
-            isRestaurant=true;isEntertainment=false;isHotel=false;
+            getSQL(SQLCommand.getRestaurant, ResultActivity.class);
+
         } else if(id == R.id.goEmergency_btn) {
             Toast.makeText(getBaseContext(), "emergency clicked",
                     Toast.LENGTH_SHORT).show();
-            isEmergency=true;
             getSQL(SQLCommand.getEmergency, EmergencyActivity.class);
         } else if(id == R.id.returnButton){
             Intent intent= new Intent(this,HomeActivity.class);
@@ -77,19 +73,10 @@ public class SelectActivity extends Activity implements View.OnClickListener{
 
     private void getSQL(String sql, Class intentClass) {
         Intent intent=this.getIntent();
-        String destination = intent.getStringExtra("Destination");
-        Intent intent2= new Intent(getApplicationContext(),intentClass);//(this,hreresult...)
-        if(!isEmergency)
-        {
-            sql=sql+"'"+destination+"' GROUP BY u.uni_name,u.uni_id ORDER BY c.rating desc;";
-        }
-        else
-        {
-            sql=sql+"'"+destination+"';";
-        }
 
-
+        Intent intent2= new Intent(getApplicationContext(),intentClass);
         intent2.putExtra("sql", sql);
+        intent2.putExtra("Destination",intent.getStringExtra("Destination"));
         startActivity(intent2);
         Toast.makeText(getBaseContext(), sql,
                 Toast.LENGTH_SHORT).show();

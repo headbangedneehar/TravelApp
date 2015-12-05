@@ -38,6 +38,7 @@ public class DescriptionActivity extends Activity implements View.OnClickListene
     static TableLayout tl,desc_table;
     private int rat_id=29;
     ImageView image;
+    Cursor cursor;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -58,20 +59,15 @@ public class DescriptionActivity extends Activity implements View.OnClickListene
 
 
         Intent intent = this.getIntent();
-        String sql = intent.getStringExtra("sql");
         uni_id = intent.getStringExtra("uni_id");
-        Cursor cursor = DBOperator.getInstance().execQuery(sql);
-        //scrollView=(ScrollView)this.findViewById(R.id.temp_scrollview);
-        //scrollView.addView(new TableView(this.getBaseContext(),cursor));
-        //textView1=(TextView)this.findViewById(R.id.temp_textview);
-        //textView2=(TextView)this.findViewById(R.id.temp_textview2);
-        //String one=cursor.getString(cursor.getColumnIndex(""));
-        //leftLinearLayout=(LinearLayout)this.findViewById(R.id.left_result_layout);
-        //rightLinearLayout=(LinearLayout)this.findViewById(R.id.right_result_layout);
 
-
-        image = (ImageView) this.findViewById(R.id.descriptionImageView);
-
+        if(uni_id.contains("h")) {
+            cursor = DBOperator.getInstance().execQuery(SQLCommand.resultHotel, this.getHotel(uni_id));
+        } else if(uni_id.contains("r")) {
+            cursor = DBOperator.getInstance().execQuery(SQLCommand.resultRestaurant, this.getHotel(uni_id));
+        } else if(uni_id.contains("e")) {
+            cursor = DBOperator.getInstance().execQuery(SQLCommand.resultEntertainment, this.getHotel(uni_id));
+        }
 
         desc_table = (TableLayout) this.findViewById(R.id.desc_table);
         tl = (TableLayout) this.findViewById(R.id.temptable);
@@ -82,16 +78,6 @@ public class DescriptionActivity extends Activity implements View.OnClickListene
         //col_names=cursor.getString(0);
         int no_of_cols = cursor.getColumnCount();//cursor.getcolname(0) is uni_name
 
-        //String col_names=cursor.getString(cursor.getColumnIndex("uni_type"));
-
-        //String col_names = cursor.getString(cursor.getColumnIndex("name"));
-
-        //textView1.setText(cursor.getString(cursor.getColumnIndex(col_names+" "+Integer.toString(no_of_cols))));
-        //textView1.setText(col_names+" "+Integer.toString(no_of_cols));
-        //textView2.setText(cursor.getString(cursor.getColumnIndex(col_names[1])));
-
-        //final TextView[] myLeftTextViews = new TextView[no_of_cols];
-        //final TextView[] myRightTextViews = new TextView[no_of_cols];
         for (int i = 0; i < no_of_cols; i++) {
             // create a new textview
             //TextView leftRowTextView = new TextView(this);//previously final
@@ -176,28 +162,7 @@ public class DescriptionActivity extends Activity implements View.OnClickListene
     }
 
 
-    /*
-        @Override
-        public boolean onCreateOptionsMenu(Menu menu) {
-            // Inflate the menu; this adds items to the action bar if it is present.
-            getMenuInflater().inflate(R.menu.menu_description, menu);
-            return true;
-        }
 
-        @Override
-        public boolean onOptionsItemSelected(MenuItem item) {
-            // Handle action bar item clicks here. The action bar will
-            // automatically handle clicks on the Home/Up button, so long
-            // as you specify a parent activity in AndroidManifest.xml.
-            int id = item.getItemId();
-
-            //noinspection SimplifiableIfStatement
-            if (id == R.id.action_settings) {
-                return true;
-            }
-
-            return super.onOptionsItemSelected(item);
-        }*/
     public void onClick(View v) {
         int id = v.getId();
         //cursor.getString(1);
@@ -237,5 +202,11 @@ public class DescriptionActivity extends Activity implements View.OnClickListene
             Intent intent = new Intent(getApplicationContext(), SelectActivity.class);
             startActivity(intent);
         }
+    }
+
+    private String[] getHotel(String uni_id) {
+        String[] args = new String[1];
+        args[0] = uni_id;
+        return args;
     }
 }

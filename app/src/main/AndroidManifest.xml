@@ -47,10 +47,6 @@
             android:label="@string/title_activity_demo" >
         </activity>
         <activity android:name="org.achartengine.GraphicalActivity" />
-        <activity
-            android:name=".AddReviewActivity"
-            android:label="@string/title_activity_add_review" >
-        </activity>
     </application>
 
 </manifest>

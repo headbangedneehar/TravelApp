@@ -25,23 +25,13 @@ public class ResultActivity extends Activity implements View.OnClickListener {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_result);
 
-        //set all booleans of this page equal to previous one
-        isResultHotel=SelectActivity.isHotel;
-        isResultRestaurant=SelectActivity.isRestaurant;
-        isResultEntertainment=SelectActivity.isEntertainment;
-
         returnFromResult = (Button) this.findViewById(R.id.returnFromResult);
         returnFromResult.setOnClickListener(this);
 
-        //reset all booleans on reaching this page
-        SelectActivity.isHotel=false;
-        SelectActivity.isRestaurant=false;
-        SelectActivity.isEntertainment=false;
-
-
         Intent intent = this.getIntent();
         String sql = intent.getStringExtra("sql");
-        Cursor cursor = DBOperator.getInstance().execQuery(sql);
+        String dest = intent.getStringExtra("Destination");
+        Cursor cursor = DBOperator.getInstance().execQuery(sql,getArgs(dest));
         listView=(ListView)this.findViewById(R.id.result_listView);
         listView.setOnItemClickListener(new ItemClickListener());
 
@@ -67,24 +57,15 @@ public class ResultActivity extends Activity implements View.OnClickListener {
             Cursor cursor = (Cursor) listView.getItemAtPosition(position);
             String uni_id = cursor.getString(cursor.getColumnIndex("_id"));
             Toast.makeText(getApplicationContext(), uni_id, Toast.LENGTH_SHORT).show();
-            String sql="";
-            if(isResultHotel)
-            {
-                sql= SQLCommand.resultHotel +"'"+ uni_id+"';";
-            }
-            else if(isResultEntertainment)
-            {
-                sql = SQLCommand.resultEntertainment +"'"+ uni_id+"';";
-            }
-            else if(isResultRestaurant)
-            {
-                sql =SQLCommand.resultRestaurant +"'"+ uni_id+"';";
-            }
-
             Intent intent=new Intent(getApplicationContext(),DescriptionActivity.class);
-            intent.putExtra("sql",sql);
             intent.putExtra("uni_id",uni_id);
             startActivity(intent);
         }
+    }
+
+    private String[] getArgs(String dest) {
+        String args[] = new String[1];
+        args[0] = dest;
+        return args;
     }
 }

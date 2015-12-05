@@ -23,10 +23,11 @@ public class EmergencyActivity extends Activity implements View.OnClickListener{
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_emergency);
         //set it back to false
-        SelectActivity.isEmergency=false;
+
         Intent intent = this.getIntent();
         String sql = intent.getStringExtra("sql");
-        Cursor cursor = DBOperator.getInstance().execQuery(sql);
+        String dest = intent.getStringExtra("Destination");
+        Cursor cursor = DBOperator.getInstance().execQuery(sql, this.getArgs(dest));
         listView=(ListView)this.findViewById(R.id.emer_listView);
         //listView.setOnItemClickListener(new ItemClickListener());
 
@@ -43,5 +44,11 @@ public class EmergencyActivity extends Activity implements View.OnClickListener{
             Intent intent = new Intent(this, SelectActivity.class);
             this.startActivity(intent);
         }
+    }
+
+    private String[] getArgs(String dest) {
+        String[] args = new String[1];
+        args[0] = dest;
+        return args;
     }
 }
