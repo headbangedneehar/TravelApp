@@ -10,6 +10,7 @@ import android.widget.ListView;
 import android.widget.ScrollView;
 import android.view.View;
 import android.widget.SimpleCursorAdapter;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.db.app.travelersapp.constant.SQLCommand;
@@ -19,18 +20,27 @@ import com.db.app.travelersapp.view.TableView;
 public class DestinationlistActivity extends Activity implements View.OnClickListener {
 
     ListView listView;
-    Button continue_btn;
+    Button returnFromDest;
+    TextView textView;
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
         setContentView(R.layout.activity_destinationlist);
 
+        returnFromDest = (Button) this.findViewById(R.id.returnFromDest);
+        returnFromDest.setOnClickListener(this);
+
         Intent intent = this.getIntent();
         String regionName = intent.getStringExtra("Region");
         Cursor cursor = DBOperator.getInstance().execQuery(SQLCommand.getDestination+"'"+regionName.toUpperCase()+"';");
         listView=(ListView)this.findViewById(R.id.dest_listView);
         listView.setOnItemClickListener(new ItemClickListener());
+
+        textView = (TextView) this.findViewById(R.id.videoLink);
+        if(regionName.toUpperCase().equalsIgnoreCase("CALIFORNIA")) {
+            textView.setText("http://www.visitcalifornia.com/");
+        }
 
         SimpleCursorAdapter adapter = new SimpleCursorAdapter(getApplicationContext(), R.layout.listitem_dest, cursor,
                 new String[]{"dest_name"}, new int[]{R.id.dest_name}, SimpleCursorAdapter.IGNORE_ITEM_VIEW_TYPE);
@@ -40,6 +50,11 @@ public class DestinationlistActivity extends Activity implements View.OnClickLis
     @Override
     public void onClick(View v){
         int id=v.getId();
+        if (id == R.id.returnFromDest) {
+
+            Intent intent = new Intent(getApplicationContext(), HomeActivity.class);
+            startActivity(intent);
+        }
 
 
     }

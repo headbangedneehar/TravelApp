@@ -4,11 +4,13 @@ import android.app.Activity;
 import android.content.Intent;
 import android.database.Cursor;
 import android.graphics.Point;
+import android.graphics.drawable.BitmapDrawable;
 import android.os.Bundle;
 import android.view.Display;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.ScrollView;
 import android.widget.TableLayout;
@@ -31,10 +33,11 @@ public class DescriptionActivity extends Activity implements View.OnClickListene
     private String uni_id;
     ScrollView scrollView;
     TextView textView1, textView2;
-    Button travelInfoButton, ratingButton;
+    Button travelInfoButton, ratingButton, returnButton;
     LinearLayout leftLinearLayout, rightLinearLayout;
     static TableLayout tl,desc_table;
     private int rat_id=29;
+    ImageView image;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -45,6 +48,8 @@ public class DescriptionActivity extends Activity implements View.OnClickListene
         travelInfoButton.setOnClickListener(this);
         ratingButton = (Button) this.findViewById(R.id.rating_btn);
         ratingButton.setOnClickListener(this);
+        returnButton = (Button) this.findViewById(R.id.returnFromDesc);
+        returnButton.setOnClickListener(this);
 
         Display display = getWindowManager().getDefaultDisplay();
         Point size = new Point();
@@ -63,6 +68,11 @@ public class DescriptionActivity extends Activity implements View.OnClickListene
         //String one=cursor.getString(cursor.getColumnIndex(""));
         //leftLinearLayout=(LinearLayout)this.findViewById(R.id.left_result_layout);
         //rightLinearLayout=(LinearLayout)this.findViewById(R.id.right_result_layout);
+
+
+        image = (ImageView) this.findViewById(R.id.descriptionImageView);
+
+
         desc_table = (TableLayout) this.findViewById(R.id.desc_table);
         tl = (TableLayout) this.findViewById(R.id.temptable);
         if (cursor != null) {
@@ -222,13 +232,10 @@ public class DescriptionActivity extends Activity implements View.OnClickListene
                     "Ratings",pairList);
             this.startActivity(intent);
         }
-        else if(id==R.id.post_review_button)
+        else if(id==R.id.returnFromDesc)
         {
-            Intent intent= new Intent(getApplicationContext(),AddReviewActivity.class);
-
-            rat_id+=1;
-            intent.putExtra("uni_id",uni_id);
-            intent.putExtra("rat_id",rat_id);
+            Intent intent = new Intent(getApplicationContext(), SelectActivity.class);
+            startActivity(intent);
         }
     }
 }

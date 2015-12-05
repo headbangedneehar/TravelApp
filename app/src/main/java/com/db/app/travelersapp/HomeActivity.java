@@ -45,7 +45,7 @@ public class HomeActivity extends Activity implements View.OnClickListener {
 
             if(!region.getText().toString().isEmpty() && destination.getText().toString().isEmpty()) //destination is empty
             {
-                Cursor cursor = DBOperator.getInstance().execQuery(SQLCommand.checkRegion+"'"+region.getText().toString().toUpperCase()+"';");
+                Cursor cursor = DBOperator.getInstance().execQuery(SQLCommand.checkRegion,this.getRegion(region.getText().toString().toUpperCase()));
                 Toast.makeText(getBaseContext(), "After region query " + cursor.getCount(),
                         Toast.LENGTH_SHORT).show();
                 if(cursor.getCount() > 0)
@@ -67,7 +67,7 @@ public class HomeActivity extends Activity implements View.OnClickListener {
                         Toast.LENGTH_SHORT).show();
             }
             else if(!destination.getText().toString().isEmpty()) {
-                Cursor cursor = DBOperator.getInstance().execQuery(SQLCommand.checkDest + "'" + destination.getText().toString().toUpperCase() + "'");
+                Cursor cursor = DBOperator.getInstance().execQuery(SQLCommand.checkDest, this.getDest(destination.getText().toString().toUpperCase()));
                 if (cursor.getCount() > 0)//to see if there exists at least 1 row with the result, that is region and destination must be valid to be true
                 {
                     String inputDest = destination.getText().toString().toUpperCase();
@@ -84,5 +84,18 @@ public class HomeActivity extends Activity implements View.OnClickListener {
                 }
             }
         }
+
+
+    }
+    private String[] getRegion(String region) {
+        String args[] = new String[1];
+        args[0]=region;
+        return args;
+    }
+
+    private String[] getDest(String dest) {
+        String args[] = new String[1];
+        args[0]=dest;
+        return args;
     }
 }

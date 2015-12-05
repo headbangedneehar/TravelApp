@@ -41,4 +41,5 @@
     <string name="title_activity_add_review">AddReviewActivity</string>
     <string name="post_review_button">Post Review</string>
     <string name="add_review_button">Add Review</string>
+    <string name="RegionLink">Official Tourism site</string>
 </resources>

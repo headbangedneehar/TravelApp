@@ -13,9 +13,10 @@
             android:text="@string/uni_name"
             android:id="@+id/uni_name"
             android:textSize="20sp"
-            android:layout_gravity="center_horizontal"
             android:layout_marginLeft="20dp"
-            android:layout_weight=".7" />
+            android:layout_weight=".7"
+            android:textAlignment="textStart"
+            android:textColor="#070468" />
 
         <TextView
             android:layout_width="wrap_content"
@@ -25,6 +26,7 @@
             android:textStyle="bold"
             android:textSize="20dp"
             android:layout_weight=".2"
-            android:layout_gravity="left" />
+            android:textAlignment="textStart"
+            android:textColor="#070468" />
     </TableRow>
 </TableLayout>

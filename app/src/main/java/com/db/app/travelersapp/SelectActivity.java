@@ -2,6 +2,7 @@ package com.db.app.travelersapp;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.graphics.drawable.BitmapDrawable;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -12,9 +13,9 @@ import com.db.app.travelersapp.util.DBOperator;
 
 
 public class SelectActivity extends Activity implements View.OnClickListener{
-    Button goHotel_btn,goEntertainment_btn,goRestauant_btn, emergencyButton;
+    Button goHotel_btn,goEntertainment_btn,goRestauant_btn, emergencyButton, returnButton;
     static boolean isHotel=false,isEntertainment=false,isRestaurant=false,isEmergency=false;
-    ScrollView scrollView;
+
     /** Called when the activity is first created. */
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -29,13 +30,21 @@ public class SelectActivity extends Activity implements View.OnClickListener{
 
         goHotel_btn=(Button)this.findViewById(R.id.goHotel_btn);
         goHotel_btn.setOnClickListener(this);
+
+
         goEntertainment_btn=(Button)this.findViewById(R.id.goEntertainment_btn);
         goEntertainment_btn.setOnClickListener(this);
+
+
         goRestauant_btn=(Button)this.findViewById(R.id.goRestauant_btn);
         goRestauant_btn.setOnClickListener(this);
+
         emergencyButton=(Button)this.findViewById(R.id.goEmergency_btn);
         emergencyButton.setOnClickListener(this);
         //scrollView=(ScrollView)this.findViewById(R.id.tempscrollview);
+
+        returnButton = (Button) this.findViewById(R.id.goReturn_btn);
+        returnButton.setOnClickListener(this);
     }
 
     public void onClick(View v) {
@@ -59,6 +68,9 @@ public class SelectActivity extends Activity implements View.OnClickListener{
                     Toast.LENGTH_SHORT).show();
             isEmergency=true;
             getSQL(SQLCommand.getEmergency, EmergencyActivity.class);
+        } else if(id == R.id.returnButton){
+            Intent intent= new Intent(this,HomeActivity.class);
+            startActivity(intent);
         }
 
     }

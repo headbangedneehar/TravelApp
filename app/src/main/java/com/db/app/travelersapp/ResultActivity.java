@@ -6,6 +6,7 @@ import android.database.Cursor;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
+import android.widget.Button;
 import android.widget.ListView;
 import android.widget.SimpleCursorAdapter;
 import android.widget.Toast;
@@ -13,10 +14,11 @@ import android.widget.Toast;
 import com.db.app.travelersapp.constant.SQLCommand;
 import com.db.app.travelersapp.util.DBOperator;
 
-public class ResultActivity extends Activity {
+public class ResultActivity extends Activity implements View.OnClickListener {
 
     ListView listView;
     boolean isResultHotel=false,isResultEntertainment=false,isResultRestaurant=false;
+    Button returnFromResult;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -27,6 +29,9 @@ public class ResultActivity extends Activity {
         isResultHotel=SelectActivity.isHotel;
         isResultRestaurant=SelectActivity.isRestaurant;
         isResultEntertainment=SelectActivity.isEntertainment;
+
+        returnFromResult = (Button) this.findViewById(R.id.returnFromResult);
+        returnFromResult.setOnClickListener(this);
 
         //reset all booleans on reaching this page
         SelectActivity.isHotel=false;
@@ -45,6 +50,14 @@ public class ResultActivity extends Activity {
 
         listView.setAdapter(adapter);
 
+    }
+
+    public void onClick(View v) {
+        int id = v.getId();
+        if(id==R.id.returnFromResult) {
+            Intent intent = new Intent(getApplicationContext(), SelectActivity.class);
+            startActivity(intent);
+        }
     }
 
     private class ItemClickListener implements AdapterView.OnItemClickListener {
