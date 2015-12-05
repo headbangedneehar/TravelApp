@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="15sp">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/dest_text"
+            android:id="@+id/textView7"
+            android:layout_gravity="center_horizontal"
+            android:textStyle="bold"
+            android:layout_marginLeft="100sp"
+            android:textSize="20dp" />
+    </LinearLayout>
+
+    <ListView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/dest_listView" />
+
+</LinearLayout><!-- From: file:/C:/Users/Neehar/TravelApp/app/src/main/res/layout/activity_destinationlist.xml -->

@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<TableLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="horizontal" android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <TableRow
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/uni_name"
+            android:id="@+id/uni_name"
+            android:textSize="20sp"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginLeft="20dp"
+            android:layout_weight=".7" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/rating"
+            android:id="@+id/rating"
+            android:textStyle="bold"
+            android:textSize="20dp"
+            android:layout_weight=".2"
+            android:layout_gravity="left" />
+    </TableRow>
+</TableLayout><!-- From: file:/C:/Users/Neehar/TravelApp/app/src/main/res/layout/listitem_result.xml -->

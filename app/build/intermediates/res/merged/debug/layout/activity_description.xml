@@ -1,0 +1,68 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent"
+    android:layout_height="match_parent" android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:orientation="vertical"
+    tools:context="com.db.app.travelersapp.DescriptionActivity">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/temp_textview" />
+
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="351dp"
+        android:layout_height="200dp"
+        android:id="@+id/result_linearlayout"
+        android:layout_alignParentEnd="false"
+        android:layout_alignParentTop="false"
+        android:layout_below="@+id/temp_textview">
+
+        <TableLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:id="@+id/temptable">
+
+        </TableLayout>
+    </LinearLayout>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:id="@+id/scrollView"
+        android:layout_below="@+id/result_linearlayout"
+        android:layout_above="@+id/linearLayout2" >
+
+        <TableLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:id="@+id/desc_table">
+
+        </TableLayout>
+    </ScrollView>
+
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:id="@+id/linearLayout2">
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/travel_info"
+            android:id="@+id/travelinfo_button" />
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/rating_btn"
+            android:id="@+id/rating_btn" />
+    </LinearLayout>
+
+</RelativeLayout>
+<!-- From: file:/C:/Users/Neehar/TravelApp/app/src/main/res/layout/activity_description.xml -->

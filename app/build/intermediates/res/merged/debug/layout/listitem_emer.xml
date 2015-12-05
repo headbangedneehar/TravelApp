@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="horizontal" android:layout_width="match_parent"
+    android:layout_height="wrap_content" android:layout_weight="0.51">
+
+
+        <TextView
+            android:layout_width="150dp"
+            android:layout_height="wrap_content"
+            android:text="@string/emer_name"
+            android:id="@+id/emer_name" />
+
+        <TextView
+            android:layout_width="100dp"
+            android:layout_height="wrap_content"
+            android:text="@string/emer_addr"
+            android:id="@+id/emer_addr" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/emer_contact"
+            android:id="@+id/emer_contact" />
+
+</LinearLayout><!-- From: file:/C:/Users/Neehar/TravelApp/app/src/main/res/layout/listitem_emer.xml -->
