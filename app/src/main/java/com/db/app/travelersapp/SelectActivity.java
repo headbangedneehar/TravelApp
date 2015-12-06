@@ -64,7 +64,7 @@ public class SelectActivity extends Activity implements View.OnClickListener{
             Toast.makeText(getBaseContext(), "emergency clicked",
                     Toast.LENGTH_SHORT).show();
             getSQL(SQLCommand.getEmergency, EmergencyActivity.class);
-        } else if(id == R.id.returnButton){
+        } else if(id == R.id.goReturn_btn){
             Intent intent= new Intent(this,HomeActivity.class);
             startActivity(intent);
         }

@@ -22,6 +22,7 @@ public class DestinationlistActivity extends Activity implements View.OnClickLis
     ListView listView;
     Button returnFromDest;
     TextView textView;
+    static String regionName;
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -32,7 +33,7 @@ public class DestinationlistActivity extends Activity implements View.OnClickLis
         returnFromDest.setOnClickListener(this);
 
         Intent intent = this.getIntent();
-        String regionName = intent.getStringExtra("Region");
+        regionName = intent.getStringExtra("Region");
         Cursor cursor = DBOperator.getInstance().execQuery(SQLCommand.getDestination, this.getArgs(regionName.toUpperCase()));
         listView=(ListView)this.findViewById(R.id.dest_listView);
         listView.setOnItemClickListener(new ItemClickListener());

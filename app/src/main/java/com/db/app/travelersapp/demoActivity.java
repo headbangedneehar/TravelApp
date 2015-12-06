@@ -12,6 +12,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
+import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.ScrollView;
@@ -24,20 +25,24 @@ import android.widget.Toast;
 import com.db.app.travelersapp.constant.SQLCommand;
 import com.db.app.travelersapp.util.DBOperator;
 
-public class demoActivity extends Activity {
+public class demoActivity extends Activity implements View.OnClickListener{
 
     TableLayout tl;
     String uni_id;
+    Button returnButton;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_demo);
 
+        returnButton = (Button) this.findViewById(R.id.returnFromTravel);
+        returnButton.setOnClickListener(this);
+
         Intent intent = this.getIntent();
-        String sql = intent.getStringExtra("sql");
+        //String sql = intent.getStringExtra("sql");
         uni_id=intent.getStringExtra("uni_id");
-        Cursor cursor = DBOperator.getInstance().execQuery(sql);
+        Cursor cursor = DBOperator.getInstance().execQuery(SQLCommand.demo,this.getArgs(uni_id));
 
         tl=(TableLayout)this.findViewById(R.id.demotable);
 
@@ -80,6 +85,22 @@ public class demoActivity extends Activity {
             }
             while(cursor.moveToNext());
         cursor.close();
+    }
+
+    @Override
+    public void onClick(View v) {
+        int id=v.getId();
+        if (id==R.id.returnButton){
+            Intent intent = new Intent(this, DescriptionActivity.class);
+            intent.putExtra("uni_id", uni_id);
+            this.startActivity(intent);
+        }
+    }
+
+    private String[] getArgs(String uniId) {
+        String[] args = new String[1];
+        args[0] = uniId;
+        return args;
     }
 
 }

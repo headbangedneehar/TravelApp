@@ -5,17 +5,24 @@
     android:paddingTop="@dimen/activity_vertical_margin"
     android:paddingBottom="@dimen/activity_vertical_margin"
     tools:context="com.db.app.travelersapp.demoActivity"
-    android:orientation="vertical">
-
-    <TextView android:text="@string/hello_world" android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
+    android:orientation="vertical"
+    android:background="@drawable/travel">
 
     <TableLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="744dp"
         android:layout_centerVertical="true"
         android:layout_alignParentStart="true"
         android:orientation="vertical"
         android:id="@+id/demotable"></TableLayout>
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/returnlastpage"
+        android:id="@+id/returnFromTravel"
+        android:layout_gravity="center_horizontal"
+        android:textColor="#ffffff"
+        android:textSize="30dp" />
 
 </LinearLayout>

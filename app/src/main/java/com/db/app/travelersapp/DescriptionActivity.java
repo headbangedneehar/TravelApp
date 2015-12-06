@@ -30,14 +30,9 @@ import java.util.List;
 
 public class DescriptionActivity extends Activity implements View.OnClickListener {
     //768 is display width
-    private String uni_id;
-    ScrollView scrollView;
-    TextView textView1, textView2;
+    private static String uni_id;
     Button travelInfoButton, ratingButton, returnButton;
-    LinearLayout leftLinearLayout, rightLinearLayout;
     static TableLayout tl,desc_table;
-    private int rat_id=29;
-    ImageView image;
     Cursor cursor;
 
     @Override
@@ -80,8 +75,6 @@ public class DescriptionActivity extends Activity implements View.OnClickListene
 
         for (int i = 0; i < no_of_cols; i++) {
             // create a new textview
-            //TextView leftRowTextView = new TextView(this);//previously final
-            //TextView rightRowTextView = new TextView(this);
             TableRow tr = new TableRow(this);
             LayoutParams lp = new LayoutParams(LayoutParams.MATCH_PARENT, LayoutParams.WRAP_CONTENT);
             tr.setLayoutParams(lp);
@@ -89,10 +82,8 @@ public class DescriptionActivity extends Activity implements View.OnClickListene
             TextView rightRowTextView = new TextView(this);
             LinearLayout leftLL = new LinearLayout(this);
             LinearLayout rightLL = new LinearLayout(this);
-            //leftRowTextView.setLayoutParams(lp);
-            // set some properties of rowTextView or something
-            leftRowTextView.setText(cursor.getColumnName(i));//(cursor.getColumnName(i)+": "+cursor.getString(i));//(cursor.getString(cursor.getColumnIndex(col_names[i])));
-            //rightRowTextView.setLayoutParams(lp);
+
+            leftRowTextView.setText(cursor.getColumnName(i));
             rightRowTextView.setText(cursor.getString(i));
             leftRowTextView.setWidth(Math.round(displayWidth * .2f));
             rightRowTextView.setMaxWidth(Math.round(displayWidth * 0.8f));
@@ -104,20 +95,9 @@ public class DescriptionActivity extends Activity implements View.OnClickListene
             leftLL.addView(leftRowTextView);
             rightLL.addView(rightRowTextView);
 
-            //leftRowTextView.setWidth(Math.round(displayWidth*.2f));
-            //rightRowTextView.setMaxWidth(Math.round(displayWidth*0.8f));
-
-            //rightRowTextView.setMaxWidth(Math.round(displayWidth*0.8f));
             tr.addView(leftLL);
             tr.addView(rightLL);
-            // add the textview to the linearlayout
-            //leftLinearLayout.addView(leftRowTextView);
-            //rightLinearLayout.addView(rightRowTextView);
-            // save a reference to the textview for later
-
             tl.addView(tr, i);
-            //myLeftTextViews[i] = leftRowTextView;
-            //myRightTextViews[i] = rightRowTextView;
         }
         cursor.close();
 
@@ -172,8 +152,8 @@ public class DescriptionActivity extends Activity implements View.OnClickListene
                     Toast.LENGTH_LONG).show();
             Intent intent = new Intent(getApplicationContext(), demoActivity.class);
             //String sql=SQLCommand.transinfo+uni_id+"');";
-            String sql = SQLCommand.demo + "'" + uni_id + "';";
-            intent.putExtra("sql", sql);
+           // String sql = SQLCommand.demo + "'" + uni_id + "';";
+           // intent.putExtra("sql", sql);
             intent.putExtra("uni_id", uni_id);
             startActivity(intent);
         }
@@ -199,7 +179,9 @@ public class DescriptionActivity extends Activity implements View.OnClickListene
         }
         else if(id==R.id.returnFromDesc)
         {
-            Intent intent = new Intent(getApplicationContext(), SelectActivity.class);
+            Intent intent = new Intent(getApplicationContext(), ResultActivity.class);
+            intent.putExtra("Destination", this.getIntent().getStringExtra("Destination"));
+            intent.putExtra("sql", this.getIntent().getStringExtra("sql"));
             startActivity(intent);
         }
     }

@@ -17,6 +17,7 @@ import com.db.app.travelersapp.util.DBOperator;
 public class EmergencyActivity extends Activity implements View.OnClickListener{
     Button returnBtn;
     ListView listView;
+    static String dest, sql;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -25,8 +26,8 @@ public class EmergencyActivity extends Activity implements View.OnClickListener{
         //set it back to false
 
         Intent intent = this.getIntent();
-        String sql = intent.getStringExtra("sql");
-        String dest = intent.getStringExtra("Destination");
+        sql = intent.getStringExtra("sql");
+        dest = intent.getStringExtra("Destination");
         Cursor cursor = DBOperator.getInstance().execQuery(sql, this.getArgs(dest));
         listView=(ListView)this.findViewById(R.id.emer_listView);
         //listView.setOnItemClickListener(new ItemClickListener());
@@ -42,6 +43,7 @@ public class EmergencyActivity extends Activity implements View.OnClickListener{
         int id=v.getId();
         if (id==R.id.returnButton){
             Intent intent = new Intent(this, SelectActivity.class);
+            intent.putExtra("Destination", dest);
             this.startActivity(intent);
         }
     }
