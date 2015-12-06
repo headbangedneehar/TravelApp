@@ -90,7 +90,7 @@ public class demoActivity extends Activity implements View.OnClickListener{
     @Override
     public void onClick(View v) {
         int id=v.getId();
-        if (id==R.id.returnButton){
+        if (id==R.id.returnFromTravel){
             Intent intent = new Intent(this, DescriptionActivity.class);
             intent.putExtra("uni_id", uni_id);
             this.startActivity(intent);

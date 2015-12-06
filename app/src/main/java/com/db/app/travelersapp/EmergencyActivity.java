@@ -24,7 +24,8 @@ public class EmergencyActivity extends Activity implements View.OnClickListener{
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_emergency);
         //set it back to false
-
+        returnBtn = (Button) this.findViewById(R.id.returnFromEmer);
+        returnBtn.setOnClickListener(this);
         Intent intent = this.getIntent();
         sql = intent.getStringExtra("sql");
         dest = intent.getStringExtra("Destination");
@@ -41,7 +42,7 @@ public class EmergencyActivity extends Activity implements View.OnClickListener{
     @Override
     public void onClick(View v) {
         int id=v.getId();
-        if (id==R.id.returnButton){
+        if (id==R.id.returnFromEmer){
             Intent intent = new Intent(this, SelectActivity.class);
             intent.putExtra("Destination", dest);
             this.startActivity(intent);

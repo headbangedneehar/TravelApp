@@ -3,6 +3,7 @@ package com.db.app.travelersapp;
 import android.app.Activity;
 import android.content.Intent;
 import android.database.Cursor;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.widget.AdapterView;
 import android.widget.Button;
@@ -41,6 +42,10 @@ public class DestinationlistActivity extends Activity implements View.OnClickLis
         textView = (TextView) this.findViewById(R.id.videoLink);
         if(regionName.toUpperCase().equalsIgnoreCase("CALIFORNIA")) {
             textView.setText("http://www.visitcalifornia.com/");
+            textView.setTextColor(Color.BLACK);
+        } else if(regionName.toUpperCase().equalsIgnoreCase("MASSACHUSETTS")) {
+            textView.setText("http://www.massvacation.com/");
+            textView.setTextColor(Color.BLACK);
         }
 
         SimpleCursorAdapter adapter = new SimpleCursorAdapter(getApplicationContext(), R.layout.listitem_dest, cursor,

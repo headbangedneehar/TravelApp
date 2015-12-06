@@ -101,8 +101,8 @@ public class DescriptionActivity extends Activity implements View.OnClickListene
         }
         cursor.close();
 
-        String descsql=SQLCommand.getDescription+uni_id+"';";
-        Cursor cursor2 = DBOperator.getInstance().execQuery(descsql);
+        //String descsql=SQLCommand.getDescription+uni_id+"';";
+        Cursor cursor2 = DBOperator.getInstance().execQuery(SQLCommand.getDescription,this.getHotel(uni_id));
         if(cursor2!=null && cursor2.moveToFirst())
             do {
                 //int no_of_cols_desc = cursor2.getColumnCount();
@@ -159,10 +159,9 @@ public class DescriptionActivity extends Activity implements View.OnClickListene
         }
         else if (id == R.id.rating_btn) {
             // show summary chart
-            String sql=SQLCommand.rating+uni_id+"' group by rating order by rating;";
-            Toast.makeText(getBaseContext(), sql,
-                    Toast.LENGTH_SHORT).show();
-            Cursor cursor = DBOperator.getInstance().execQuery(sql);
+            //String sql=SQLCommand.rating+uni_id+"';";
+
+            Cursor cursor = DBOperator.getInstance().execQuery(SQLCommand.rating, this.getHotel(uni_id));
             List<Pair> pairList = new LinkedList<Pair>();
             for (int i = 1; i <= 5; i++) {
                 Pair pair = new Pair(i, 0);
@@ -185,6 +184,7 @@ public class DescriptionActivity extends Activity implements View.OnClickListene
             startActivity(intent);
         }
     }
+
 
     private String[] getHotel(String uni_id) {
         String[] args = new String[1];
