@@ -9,7 +9,6 @@ import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.ListView;
 import android.widget.SimpleCursorAdapter;
-import android.widget.Toast;
 import com.db.app.travelersapp.util.DBOperator;
 
 public class ResultActivity extends Activity implements View.OnClickListener {
@@ -55,7 +54,6 @@ public class ResultActivity extends Activity implements View.OnClickListener {
 
             Cursor cursor = (Cursor) listView.getItemAtPosition(position);
             String uni_id = cursor.getString(cursor.getColumnIndex("_id"));
-            Toast.makeText(getApplicationContext(), uni_id, Toast.LENGTH_SHORT).show();
             Intent intent=new Intent(getApplicationContext(),DescriptionActivity.class);
             intent.putExtra("Destination",dest);
             intent.putExtra("sql",sql);

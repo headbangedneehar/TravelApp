@@ -13,9 +13,8 @@ public abstract class SQLCommand
     public static String resultRestaurant="select uni_type.uni_name as Name,uni_type.uni_hour as Hours,uni_type.uni_contact as Contact,uni_type.uni_desc as Description,restaurant.rest_type as Type,uni_type.uni_addr as Address from restaurant,uni_type,region,destination where restaurant.uni_id=uni_type.uni_id and uni_type.dest_id=destination.dest_id and destination.reg_id=region.reg_id and uni_type.uni_id=?";
     public static String resultEntertainment="select uni_type.uni_name as Name,uni_type.uni_hour as Hours,uni_type.uni_contact as Contact,uni_type.uni_desc as Description,entertainment.enter_type as Type,uni_type.uni_addr as Address from entertainment,uni_type,region,destination where entertainment.uni_id=uni_type.uni_id and uni_type.dest_id=destination.dest_id and destination.reg_id=region.reg_id and uni_type.uni_id=?";
     public static String resultHotel="select uni_type.uni_name as Name,uni_type.uni_hour as Hours,uni_type.uni_contact as Contact,uni_type.uni_desc as Description,hotel.hotel_type as Type,uni_type.uni_addr as Address from hotel,uni_type,region,destination where hotel.uni_id=uni_type.uni_id and uni_type.dest_id=destination.dest_id and destination.reg_id=region.reg_id and uni_type.uni_id=?" ;
-    public static  String travelinfo="select ti.travel_dist,ti.travel_time,ti.travel_price from travel_info ti,transport t where ti.trans_id=t.trans_id and uni_id=?";
 
-    public static String demo="select t.start_point as 'Start Point',t.trans_type as 'Travel By',ti.travel_dist as Distance,ti.travel_time as Time,ti.travel_price as Price from travel_info ti,transport t where ti.trans_id=t.trans_id and uni_id=?";
+    public static String travelInfo="select t.start_point as 'Start Point',t.trans_type as 'Travel By',ti.travel_dist as Distance,ti.travel_time as Time,ti.travel_price as Price from travel_info ti,transport t where ti.trans_id=t.trans_id and uni_id=?";
     public static  String rating="select rating,count(*) from cust_rating where uni_id=? group by rating order by rating";
     public  static  String getDescription="select review from cust_rating where uni_id=?";
 

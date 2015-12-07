@@ -2,12 +2,9 @@ package com.db.app.travelersapp;
 
 import android.app.Activity;
 import android.content.Intent;
-import android.graphics.drawable.BitmapDrawable;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
-import android.widget.ScrollView;
-import android.widget.Toast;
 import com.db.app.travelersapp.constant.SQLCommand;
 import com.db.app.travelersapp.util.DBOperator;
 
@@ -61,9 +58,8 @@ public class SelectActivity extends Activity implements View.OnClickListener{
             getSQL(SQLCommand.getRestaurant, ResultActivity.class);
 
         } else if(id == R.id.goEmergency_btn) {
-            Toast.makeText(getBaseContext(), "emergency clicked",
-                    Toast.LENGTH_SHORT).show();
             getSQL(SQLCommand.getEmergency, EmergencyActivity.class);
+
         } else if(id == R.id.goReturn_btn){
             Intent intent= new Intent(this,HomeActivity.class);
             startActivity(intent);
@@ -78,8 +74,6 @@ public class SelectActivity extends Activity implements View.OnClickListener{
         intent2.putExtra("sql", sql);
         intent2.putExtra("Destination",intent.getStringExtra("Destination"));
         startActivity(intent2);
-        Toast.makeText(getBaseContext(), sql,
-                Toast.LENGTH_SHORT).show();
 
     }
 }

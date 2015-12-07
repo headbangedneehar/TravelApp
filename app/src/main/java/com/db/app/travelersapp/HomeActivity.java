@@ -8,11 +8,8 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
-
 import com.db.app.travelersapp.constant.SQLCommand;
 import com.db.app.travelersapp.util.DBOperator;
-
-//import com.db.app.travelersapp.R;
 
 
 public class HomeActivity extends Activity implements View.OnClickListener {
@@ -46,8 +43,6 @@ public class HomeActivity extends Activity implements View.OnClickListener {
             if(!region.getText().toString().isEmpty() && destination.getText().toString().isEmpty()) //destination is empty
             {
                 Cursor cursor = DBOperator.getInstance().execQuery(SQLCommand.checkRegion,this.getRegion(region.getText().toString().toUpperCase()));
-                Toast.makeText(getBaseContext(), "After region query " + cursor.getCount(),
-                        Toast.LENGTH_SHORT).show();
                 if(cursor.getCount() > 0)
                 {
                     String inputRegion=region.getText().toString();
@@ -63,7 +58,7 @@ public class HomeActivity extends Activity implements View.OnClickListener {
             }
             else if(region.getText().toString().isEmpty() && destination.getText().toString().isEmpty()) //both are empty
             {
-                Toast.makeText(getBaseContext(), "Blank Region and Destination! Not Valid",
+                Toast.makeText(getBaseContext(), "Please enter region/destination",
                         Toast.LENGTH_SHORT).show();
             }
             else if(!destination.getText().toString().isEmpty()) {
@@ -71,11 +66,9 @@ public class HomeActivity extends Activity implements View.OnClickListener {
                 if (cursor.getCount() > 0)//to see if there exists at least 1 row with the result, that is region and destination must be valid to be true
                 {
                     String inputDest = destination.getText().toString().toUpperCase();
-                    Intent intent = new Intent(this, SelectActivity.class); //Need to put the activity class of the next page
+                    Intent intent = new Intent(this, SelectActivity.class);
                     intent.putExtra("Destination", inputDest);
                     this.startActivity(intent);
-                    Toast.makeText(getBaseContext(), String.valueOf(cursor.getCount()),
-                            Toast.LENGTH_SHORT).show();
                 }
                 else
                 {

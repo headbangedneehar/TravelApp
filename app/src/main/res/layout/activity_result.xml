@@ -20,10 +20,10 @@ android:weightSum="1"
             android:layout_height="wrap_content"
             android:text="@string/uni_name"
             android:textSize="20dp"
-            android:layout_marginLeft="20dp"
-            android:layout_weight=".7"
+            android:layout_weight=".8"
             android:textColor="#070468"
-            android:textAlignment="textStart" />
+            android:textAlignment="textStart"
+            android:layout_marginRight="20dp" />
 
         <TextView
             android:layout_width="wrap_content"
@@ -32,9 +32,11 @@ android:weightSum="1"
             android:id="@+id/textView8"
             android:textSize="20dp"
             android:textStyle="bold"
-            android:layout_weight=".15"
+            android:layout_weight=".2"
             android:textColor="#070468"
-            android:textAlignment="textStart" />
+            android:textAlignment="textStart"
+            android:layout_marginRight="20dp"
+            android:minWidth="70dp" />
     </LinearLayout>
 
     <ListView
@@ -49,7 +51,7 @@ android:weightSum="1"
         android:text="@string/returnlastpage"
         android:id="@+id/returnFromResult"
         android:layout_gravity="center_horizontal"
-        android:textColor="#FFFFFF"
+        android:textColor="#070468"
         android:clickable="true" />
 
 </LinearLayout>

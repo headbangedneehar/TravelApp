@@ -4,19 +4,15 @@ import android.app.Activity;
 import android.content.Intent;
 import android.database.Cursor;
 import android.graphics.Point;
-import android.graphics.drawable.BitmapDrawable;
 import android.os.Bundle;
 import android.view.Display;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
-import android.widget.ImageView;
 import android.widget.LinearLayout;
-import android.widget.ScrollView;
 import android.widget.TableLayout;
 import android.widget.TableRow;
 import android.widget.TextView;
-import android.widget.Toast;
 import android.view.ViewGroup.LayoutParams;
 
 import com.db.app.travelersapp.constant.SQLCommand;
@@ -30,7 +26,7 @@ import java.util.List;
 
 public class DescriptionActivity extends Activity implements View.OnClickListener {
     //768 is display width
-    private static String uni_id;
+    private static String uni_id, dest, sql;
     Button travelInfoButton, ratingButton, returnButton;
     static TableLayout tl,desc_table;
     Cursor cursor;
@@ -55,6 +51,8 @@ public class DescriptionActivity extends Activity implements View.OnClickListene
 
         Intent intent = this.getIntent();
         uni_id = intent.getStringExtra("uni_id");
+        dest = intent.getStringExtra("Destination");
+        sql = intent.getStringExtra("sql");
 
         if(uni_id.contains("h")) {
             cursor = DBOperator.getInstance().execQuery(SQLCommand.resultHotel, this.getHotel(uni_id));
@@ -148,13 +146,10 @@ public class DescriptionActivity extends Activity implements View.OnClickListene
         //cursor.getString(1);
 
         if (id == R.id.travelinfo_button) {
-            Toast.makeText(getBaseContext(), uni_id,
-                    Toast.LENGTH_LONG).show();
-            Intent intent = new Intent(getApplicationContext(), demoActivity.class);
-            //String sql=SQLCommand.transinfo+uni_id+"');";
-           // String sql = SQLCommand.demo + "'" + uni_id + "';";
-           // intent.putExtra("sql", sql);
+            Intent intent = new Intent(getApplicationContext(), TravelInfoActivity.class);
             intent.putExtra("uni_id", uni_id);
+            intent.putExtra("Destination", dest);
+            intent.putExtra("sql", sql);
             startActivity(intent);
         }
         else if (id == R.id.rating_btn) {

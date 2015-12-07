@@ -39,11 +39,7 @@
             android:label="@string/title_activity_description" >
         </activity>
         <activity
-            android:name=".travelInfoActivity"
-            android:label="@string/title_activity_travel_info" >
-        </activity>
-        <activity
-            android:name=".demoActivity"
+            android:name=".TravelInfoActivity"
             android:label="@string/title_activity_demo" >
         </activity>
         <activity android:name="org.achartengine.GraphicalActivity" />
