@@ -3,56 +3,63 @@
     android:orientation="vertical" android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:weightSum="1"
-    android:background="@drawable/emer">
+    android:background="@drawable/way">
 
     <TextView
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_height="40dp"
         android:text="@string/emer_head"
         android:id="@+id/textView3"
         android:layout_gravity="center_horizontal"
         android:textStyle="bold"
-        android:textColor="#000000" />
+        android:textColor="#FFFFFF"
+        android:textSize="23dp"
+        android:layout_marginTop="20dp"/>
 
     <LinearLayout
         android:orientation="horizontal"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_weight="0.03">
+        android:layout_weight="0.06">
 
         <TextView
             android:layout_width="150dp"
             android:layout_height="wrap_content"
             android:text="@string/emer_name"
             android:id="@+id/textView4"
-            android:textColor="#000000" />
+            android:textColor="#FFFFFF"
+            android:textStyle="bold"/>
 
         <TextView
             android:layout_width="100dp"
             android:layout_height="wrap_content"
             android:text="@string/emer_addr"
             android:id="@+id/textView5"
-            android:textColor="#000000" />
+            android:textColor="#FFFFFF"
+            android:textStyle="bold" />
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/emer_contact"
             android:id="@+id/textView6"
-            android:textColor="#000000" />
+            android:textColor="#FFFFFF"
+            android:textStyle="bold" />
     </LinearLayout>
 
     <ListView
         android:layout_width="match_parent"
         android:layout_height="370dp"
         android:id="@+id/emer_listView"
-        android:layout_gravity="center_horizontal" />
+        android:layout_gravity="center_horizontal"
+        android:layout_weight="0.36"/>
 
     <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="180dp"
+        android:layout_height="30dp"
+        android:background="@drawable/purple"
         android:text="@string/returnlastpage"
         android:id="@+id/returnFromEmer"
         android:layout_gravity="center_horizontal"
-        android:textColor="#000000" />
+        android:layout_marginTop="100dp" />
 </LinearLayout>

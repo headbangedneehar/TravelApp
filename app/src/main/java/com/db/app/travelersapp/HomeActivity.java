@@ -49,8 +49,6 @@ public class HomeActivity extends Activity implements View.OnClickListener {
                     Intent intent = new Intent(this, DestinationlistActivity.class); //Need to put the DestList activity class of the next page
                     intent.putExtra("Region",inputRegion);
                     this.startActivity(intent);
-                    Toast.makeText(getBaseContext(), String.valueOf(cursor.getCount()),
-                            Toast.LENGTH_SHORT).show();
                 } else {
                     Toast.makeText(getBaseContext(), "Region Not Found",
                             Toast.LENGTH_SHORT).show();

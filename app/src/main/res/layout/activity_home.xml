@@ -4,36 +4,18 @@
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
     android:paddingBottom="@dimen/activity_vertical_margin" tools:context=".HomeActivity"
-    android:background="@drawable/starsky">
-
-    <ImageView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:id="@+id/imageView2"
-        android:background="@drawable/starsky"
-        android:layout_marginLeft="0dp"
-        android:layout_marginRight="0dp"
-        android:layout_marginBottom="0dp"
-        android:layout_alignParentEnd="true"
-        android:layout_alignParentTop="true"
-        android:layout_alignParentStart="true" />
-
-    <LinearLayout
-        android:orientation="horizontal"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"></LinearLayout>
+    android:background="@drawable/hill">
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/region"
         android:id="@+id/textView"
-        android:layout_marginStart="42dp"
-        android:layout_marginTop="168dp"
+        android:layout_marginTop="158dp"
         android:textStyle="bold"
         android:textSize="20dp"
         android:layout_alignParentTop="true"
-        android:layout_alignParentStart="true" />
+        android:layout_toStartOf="@+id/region_editText" />
 
     <EditText
         android:layout_width="wrap_content"
@@ -51,9 +33,8 @@
         android:id="@+id/textView2"
         android:textSize="20dp"
         android:textStyle="bold"
-        android:layout_centerVertical="true"
-        android:layout_alignParentStart="true"
-        android:layout_marginTop="30dp"/>
+        android:layout_alignTop="@+id/dest_editText"
+        android:layout_alignParentStart="true" />
 
     <EditText
         android:layout_width="wrap_content"
@@ -63,17 +44,15 @@
         android:layout_alignParentEnd="true"
         android:layout_toEndOf="@+id/textView2"
         android:layout_alignStart="@+id/region_editText"
-        android:editable="true"
-        android:layout_toRightOf="@+id/textView2" />
+        android:editable="true" />
 
     <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="100dp"
+        android:layout_height="50dp"
         android:text="@string/search"
         android:id="@+id/search_btn"
-        android:layout_below="@+id/textView2"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="69dp"
-        android:textStyle="bold" />
+        android:textStyle="bold"
+        android:layout_centerVertical="true"
+        android:layout_centerHorizontal="true" />
 
 </RelativeLayout>

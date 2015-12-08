@@ -17,15 +17,15 @@
     <string name="entertainmentsearch">Entertainment</string>
     <string name="returnlastpage">Return</string>
     <string name="Emergenceinfo">EmergencyInfo</string>
-    <string name="selectActivity">SelectActivity</string>
-    <string name="homeActivity">HomeActivity</string>
-    <string name="emer_head">Emergeny Contact Information</string>
+    <string name="selectActivity">Select</string>
+    <string name="homeActivity">Home</string>
+    <string name="emer_head">Emergency Contact Information</string>
     <string name="emer_name">Contact Type</string>
     <string name="emer_addr">Address</string>
     <string name="emer_contact">Contact Information</string>
     <string name="emer_return">Return to Home Page</string>
-    <string name="title_activity_result">ResultActivity</string>
-    <string name="title_activity_description">DescriptionActivity</string>
+    <string name="title_activity_result">Result</string>
+    <string name="title_activity_description">Description</string>
 
     <string name="hello_world">Hello world!</string>
     <string name="uni_name">Name</string>

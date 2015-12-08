@@ -13,22 +13,22 @@
             android:text="@string/uni_name"
             android:id="@+id/uni_name"
             android:textSize="20sp"
-            android:layout_weight=".8"
+            android:layout_weight=".7"
             android:textAlignment="textStart"
-            android:textColor="#070468"
-            android:layout_marginRight="20dp" />
+            android:textColor="#FFFFFF"
+            android:layout_marginLeft="20dp" />
 
         <TextView
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/rating"
             android:id="@+id/rating"
-            android:textStyle="bold"
             android:textSize="20dp"
-            android:layout_weight=".2"
             android:textAlignment="textStart"
-            android:textColor="#070468"
+            android:textColor="#FFFFFF"
             android:maxLines="1"
-            android:minWidth="70dp" />
+            android:minWidth="70dp"
+            android:singleLine="true"
+            android:maxLength="3"/>
     </TableRow>
 </TableLayout>

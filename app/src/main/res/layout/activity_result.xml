@@ -7,7 +7,7 @@ android:paddingTop="@dimen/activity_vertical_margin"
 android:paddingBottom="@dimen/activity_vertical_margin"
 tools:context="com.db.travel.app.v1.HREresultActivity"
 android:weightSum="1"
-    android:background="@drawable/result">
+    android:background="@drawable/water">
 
     <LinearLayout
         android:orientation="horizontal"
@@ -20,8 +20,10 @@ android:weightSum="1"
             android:layout_height="wrap_content"
             android:text="@string/uni_name"
             android:textSize="20dp"
-            android:layout_weight=".8"
-            android:textColor="#070468"
+            android:layout_weight=".7"
+            android:layout_marginLeft="20dp"
+            android:textStyle="bold"
+            android:textColor="#FFFFFF"
             android:textAlignment="textStart"
             android:layout_marginRight="20dp" />
 
@@ -32,11 +34,9 @@ android:weightSum="1"
             android:id="@+id/textView8"
             android:textSize="20dp"
             android:textStyle="bold"
-            android:layout_weight=".2"
-            android:textColor="#070468"
-            android:textAlignment="textStart"
-            android:layout_marginRight="20dp"
-            android:minWidth="70dp" />
+            android:layout_weight="0.15"
+            android:textColor="#FFFFFF"
+            android:layout_gravity="right" />
     </LinearLayout>
 
     <ListView
@@ -45,14 +45,26 @@ android:weightSum="1"
     android:id="@+id/result_listView"
         android:textAlignment="textStart" />
 
-    <Button
-        android:layout_width="wrap_content"
+
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="@string/returnlastpage"
-        android:id="@+id/returnFromResult"
         android:layout_gravity="center_horizontal"
-        android:textColor="#070468"
-        android:clickable="true" />
+        android:layout_marginTop="250dp">
+
+        <Button
+            android:layout_width="100dp"
+            android:layout_height="30dp"
+            android:background="@drawable/darkblue"
+            android:text="@string/returnlastpage"
+            android:id="@+id/returnFromResult"
+            android:layout_gravity="center_horizontal"
+            android:textColor="#070468"
+            android:clickable="true" />
+    </LinearLayout>
+
 
 </LinearLayout>
 

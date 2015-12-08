@@ -3,6 +3,7 @@ package com.db.app.travelersapp;
 import android.app.Activity;
 import android.content.Intent;
 import android.database.Cursor;
+import android.graphics.Color;
 import android.graphics.Point;
 import android.os.Bundle;
 import android.view.Display;
@@ -88,10 +89,13 @@ public class DescriptionActivity extends Activity implements View.OnClickListene
 
             leftRowTextView.setSingleLine(false);
             rightRowTextView.setSingleLine(false);
-            rightRowTextView.setPadding(20,0,70,0);
+            rightRowTextView.setPadding(20, 0, 70, 0);
 
             leftLL.addView(leftRowTextView);
             rightLL.addView(rightRowTextView);
+
+            leftRowTextView.setTextColor(Color.parseColor("#FFFFFF"));
+            rightRowTextView.setTextColor(Color.parseColor("#FFFFFF"));
 
             tr.addView(leftLL);
             tr.addView(rightLL);
