@@ -27,37 +27,38 @@ public class ChartGenerator {
 
     static {
         mRenderer.setChartTitleTextSize(30);
-        mRenderer.setLabelsTextSize(15);
-        mRenderer.setLegendTextSize(15);
+        mRenderer.setLabelsTextSize(30);
+        mRenderer.setLegendTextSize(20);
         mRenderer.setZoomEnabled(false, false);
         mRenderer.setYLabelsAlign(Align.RIGHT);
         mRenderer.setShowGridY(true);
         mRenderer.setXLabelsColor(Color.RED);
         mRenderer.setYLabelsColor(0, Color.RED);
         mRenderer.setXLabels(0);
-        String[] months = new String[] { "1 Star","2 Star","3 Star","4 Star","5 Star",};
-        for (int i = 0; i < months.length; i++) {
-            mRenderer.addXTextLabel(i + 1, months[i]);
+        String[] ratings = new String[] { "1 Star","2 Star","3 Star","4 Star","5 Star",""};
+        for (int i = 0; i < ratings.length; i++) {
+            mRenderer.addXTextLabel(i + 1, ratings[i]);
         }
         mRenderer.setShowGridX(true);
         mRenderer.setXTitle("Rating");
-        mRenderer.setYTitle("Number of Ratings");
-        mRenderer.setAxisTitleTextSize(20);
+        mRenderer.setYTitle("Number of Customers");
+        mRenderer.setAxisTitleTextSize(30);
         mRenderer.setMargins(new int[] { 80, 40, 60, 40 });
         mRenderer.setPanEnabled(false, false);
         mRenderer.setZoomButtonsVisible(false);
-        mRenderer.setBarSpacing(1f);
-        renderer.setColor(Color.BLUE);
+        mRenderer.setBarSpacing(0.6f);
+        mRenderer.setBarWidth(30);
+        renderer.setColor(Color.WHITE);
         renderer.setDisplayChartValues(true);
         renderer.setChartValuesTextAlign(Align.RIGHT);
-        renderer.setChartValuesTextSize(20f);
+        renderer.setChartValuesTextSize(30f);
 
         mRenderer.addSeriesRenderer(renderer);
     }
 
     private static XYMultipleSeriesDataset createDataSet(List<Pair> pairList) {
         XYMultipleSeriesDataset mDataset = new XYMultipleSeriesDataset();
-        CategorySeries series = new CategorySeries("Number of Ratings / Star Rating");
+        CategorySeries series = new CategorySeries("Number of Customers / Star Rating");
         for (Pair pair : pairList) {
             if (pair.getNumber() > yMaxNum) {
                 yMaxNum = pair.getNumber();

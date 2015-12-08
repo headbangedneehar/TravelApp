@@ -45,7 +45,7 @@ public class DBOperator
     public static void copyDB(Context context) throws IOException,FileNotFoundException{
         String path = DBConstant.DATABASE_PATH + "/" + DBConstant.DATABASE_FILE;
         File file = new File(path);
-        if (!file.exists()){
+        if (!file.exists() && !file.isDirectory()){
             DBOpenHelper dbhelper = new DBOpenHelper(context, path ,1);
             dbhelper.getWritableDatabase();
             InputStream is = context.getAssets().open(DBConstant.DATABASE_FILE);

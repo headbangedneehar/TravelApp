@@ -19,7 +19,7 @@
 
     <LinearLayout
         android:orientation="horizontal"
-        android:layout_width="351dp"
+        android:layout_width="match_parent"
         android:layout_height="200dp"
         android:id="@+id/result_linearlayout"
         android:layout_alignParentEnd="false"
@@ -73,22 +73,12 @@
             android:text="@string/travel_info"
             android:id="@+id/travelinfo_button" />
 
-        <TextView
-            android:layout_width="35dp"
-            android:layout_height="wrap_content"
-            android:id="@+id/blank1" />
-
         <Button
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/rating_btn"
             android:id="@+id/rating_btn"
             android:textColor="#FFFFFF" />
-
-        <TextView
-            android:layout_width="35dp"
-            android:layout_height="wrap_content"
-            android:id="@+id/blank2" />
 
         <Button
             android:layout_width="wrap_content"
