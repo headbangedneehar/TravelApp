@@ -56,6 +56,14 @@ public class TravelInfoActivity extends Activity implements View.OnClickListener
                     LinearLayout rightLL = new LinearLayout(this);
                     leftRowTextView.setText(cursor.getColumnName(i));
                     rightRowTextView.setText(cursor.getString(i));
+                    if(i==2) {
+                        rightRowTextView.setText(cursor.getString(i) + " miles");
+                    } else if(i==3) {
+                        rightRowTextView.setText(cursor.getString(i) + " minutes");
+                    } else if(i==4) {
+                        rightRowTextView.setText("$ "+cursor.getString(i));
+                    }
+
                     leftRowTextView.setWidth(Math.round(displayWidth * .2f));
                     rightRowTextView.setMaxWidth(Math.round(displayWidth * 0.8f));
 
