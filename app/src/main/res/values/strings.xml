@@ -1,8 +1,8 @@
 <resources>
     <string name="app_name">Travelers Guide</string>
     <string name="action_settings">Settings</string>
-    <string name="region">Region</string>
-    <string name="destination">Destination</string>
+    <string name="region">State</string>
+    <string name="destination">City</string>
     <string name="search">Search</string>
 
     <string name="Welcome_Page_Btn">GET STARTED!</string>

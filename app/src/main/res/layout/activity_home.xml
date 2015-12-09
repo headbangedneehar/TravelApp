@@ -15,7 +15,8 @@
         android:textStyle="bold"
         android:textSize="20dp"
         android:layout_alignParentTop="true"
-        android:layout_toStartOf="@+id/region_editText" />
+        android:layout_toStartOf="@+id/region_editText"
+        android:width="70dp" />
 
     <EditText
         android:layout_width="wrap_content"
@@ -34,7 +35,8 @@
         android:textSize="20dp"
         android:textStyle="bold"
         android:layout_alignTop="@+id/dest_editText"
-        android:layout_alignParentStart="true" />
+        android:layout_alignParentStart="true"
+        android:width="70dp" />
 
     <EditText
         android:layout_width="wrap_content"

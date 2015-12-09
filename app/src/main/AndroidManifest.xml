@@ -43,6 +43,7 @@
             android:label="@string/title_activity_demo" >
         </activity>
         <activity android:name="org.achartengine.GraphicalActivity" />
+        <uses-permission android:name="android.permission.CALL_PHONE" />
     </application>
 
 </manifest>

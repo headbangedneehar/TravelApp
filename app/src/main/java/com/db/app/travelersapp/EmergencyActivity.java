@@ -3,8 +3,10 @@ package com.db.app.travelersapp;
 import android.app.Activity;
 import android.content.Intent;
 import android.database.Cursor;
+import android.net.Uri;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.ListView;
 import android.widget.SimpleCursorAdapter;
@@ -31,12 +33,25 @@ public class EmergencyActivity extends Activity implements View.OnClickListener{
         dest = intent.getStringExtra("Destination");
         Cursor cursor = DBOperator.getInstance().execQuery(sql, this.getArgs(dest));
         listView=(ListView)this.findViewById(R.id.emer_listView);
-        //listView.setOnItemClickListener(new ItemClickListener());
+        listView.setOnItemClickListener(new ItemClickListener());
 
         SimpleCursorAdapter adapter = new SimpleCursorAdapter(getApplicationContext(), R.layout.listitem_emer, cursor,
                 new String[]{"emer_name", "emer_addr", "emer_contact"}, new int[]{R.id.emer_name,R.id.emer_addr, R.id.emer_contact}, SimpleCursorAdapter.IGNORE_ITEM_VIEW_TYPE);
 
         listView.setAdapter(adapter);
+    }
+
+    private class ItemClickListener implements AdapterView.OnItemClickListener {
+
+        public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+
+            Cursor cursor = (Cursor) listView.getItemAtPosition(position);
+            //String uni_id = cursor.getString(cursor.getColumnIndex("_id"));
+
+            Intent intent = new Intent(Intent.ACTION_DIAL, Uri.parse("tel:" + cursor.getString(3)));
+            startActivity(intent);
+
+        }
     }
 
     @Override
